@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>工作必备效率应用 | MagneticNote</title>
+    <link rel="stylesheet" href="../static/styles/iview.css" />
+    <script type="text/javascript" src="../static/script/vue.js"></script>
+    <script type="text/javascript" src="../static/script/axios.js"></script>
+    <script type="text/javascript" src="../static/script/iview.js"></script>
+    <style type="text/css">
+        html,body{
+            height:100%;
+        }
+        .section-block{
+            height:100%;
+            min-width: 500px;
+            background: #F8F8F8;
+            overflow: hidden;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }:after, :before {box-sizing: border-box;}
+        .position_ab{
+            padding-left: 80px;
+            position: absolute;
+        }
+        .my-move-left-appear,.my-move-left-enter-active{animation-duration:.3s;animation-fill-mode:both;animation-play-state:paused}
+        .my-move-left-appear,.my-move-left-enter-active{animation-name:ivuMoveLeftIn;animation-play-state:running}
+        .my-move-left-appear,.my-move-left-enter-active{opacity:0;animation-timing-function:ease-in-out}
+    </style>
+</head>
+
+<body>
+    <div id="app" style="height: 100%;">
+        <div  v-if="this.nav_isshow" class="section-block" style="float:left;min-width:70px;margin: 0">
+            <i-menu width="70px" style="height: 100%;background:#F8F8F8;" @on-select="select">
+                <menugroup>
+                    <img src="../static/image/log.png" style="width:42px;height: 42px;margin-left: 10px;"></img>
+                </menugroup>
+
+                <menugroup>
+                    <imenuitem name="add" style="padding-left: 17px">
+                        <Poptip trigger="hover" content="新建笔记" placement="top-start">
+                            <Icon type="ios-plus" size="38" color="#2DBE60" ></Icon>
+                        </Poptip>
+                    </imenuitem>
+                    <imenuitem name="search" style="padding-left: 20px">
+                        <Poptip trigger="hover" content="搜索笔记" placement="top-start">
+                            <Icon type="ios-search-strong" size="38" color="#2DBE60" /></Icon>
+                        </Poptip>
+                    </imenuitem>
+                </menugroup>
+
+                <menugroup>
+                    <imenuitem name="note" style="padding-left: 23px">
+                        <Poptip trigger="hover" content="查看笔记" placement="top-start">
+                            <Icon type="document-text" size="38" color="#2DBE60" /></Icon>
+                        </Poptip>
+                    </imenuitem>
+                    <imenuitem name="book" style="padding-left: 20px">
+                        <Poptip trigger="hover" content="查看笔记本" placement="top-start">
+                            <Icon type="ios-book" size="38" color="#2DBE60" /></Icon>
+                        </Poptip>
+                    </imenuitem>
+                </menugroup>
+            </i-menu>
+        </div>
+
+        <transition name="ease">
+            <div style="width:100%;overflow-y: auto;" class="section-block" v-if="this.section_create_isshow">
+                <div style="text-align: right;margin: 20px">
+                    <i-button type="success" @click="cancel">取 消</i-button>
+                </div>
+
+                <Row>
+                    <i-col span="16" offset="4">
+                        <i-select v-model="select_option" style="width:200px;height:70px;" :filterable="true" @on-change="select_change">
+                            <i-option v-for="item in this.bookList" :value="item.Id" :key="item.Id">{{ item.Name }}</i-option>
+                        </i-select>
+                    </i-col>
+                </Row>
+
+                <Row  style="padding-bottom: 30px">
+                    <i-col span="16" offset="4">
+                        <div style="height:1px;width:100%;background:#d0d0d0;overflow:hidden;"></div>
+                    </i-col>
+                </Row>
+
+                <Row style="margin-bottom: 20px">
+                    <i-col span="16" offset="4">
+                        <i-input id="input_add_title" style="border:0px;background:rgba(0, 0, 0, 0); " type="text" :maxlength="30" size="large" v-model="add_note_title" placeholder="请在这里输入标题"></i-input>
+                    </i-col>
+                </Row>
+
+                <Row>
+                    <i-col span="16" offset="4">
+                        <i-input id="input_add_content" style="border:0px;background:rgba(0, 0, 0, 0); " :rows="15" type="textarea" v-model="add_note_content" placeholder="请输入内容"></i-input>
+                    </i-col>
+                </Row>
+
+                <Row style="margin-top: 20px;margin-bottom: 20px">
+                    <i-col span="16" offset="4">
+                        <i-button type="success" @click="addNote" :loading="button_isloading">确定</i-button>
+                    </i-col>
+                </Row>
+            </div>
+        </transition>
+
+        <transition name="my-move-left">
+            <div class="section-block position_ab" v-if="this.section_search_isshow">
+                <Row style="margin: 30px 0 30px 0">
+                    <i-col span="16" offset="4">
+                        <h1>搜索笔记</h1>
+                    </i-col>
+                </Row>
+
+                <Row>
+                    <i-col span="6" offset="4">
+                        <i-select v-model="select_option" style="width:200px" :filterable="true" value="1">
+                            <i-option :value="1" :key="1">搜索所有笔记</i-option>
+                            <i-option v-for="item in bookList" :value="item.Id" :key="item.Id">{{ item.Name }}</i-option>
+                        </i-select>
+                    </i-col>
+                </Row>
+                <Row style="margin: 30px 0 30px 0">
+                    <i-col span="16" offset="4">
+                        <div style="height:1px;width:100%;background:#d0d0d0;overflow:hidden;"></div>
+                    </i-col>
+                </Row>
+                <Row style="margin: 30px 0 30px 0">
+                    <i-col span="16" offset="4">
+                        <i-input v-model="search_content" type="text" siez="large" placeholder="搜索笔记"></i-input>
+                    </i-col>
+                </Row>
+                <Row>
+                    <i-col span="7" offset="17">
+                        <i-button type="success" @click="search">搜索</i-button>
+                    </i-col>
+                </Row>
+            </div>
+        </transition>
+
+        <transition name="my-move-left">
+            <div class="section-block position_ab" v-if="this.section_note_isshow" style="width:100%">
+                <div class="section-block" style="min-width: 380px;width:380px;float: left;border-right:1px solid #D0D0D0;">
+                    <div style="height: 10%;min-height:110px;padding: 30px">
+                        <h1 style="margin-bottom: 15px">笔记</h1>
+                        <div style="height:1px;width:100%;background:#d0d0d0;overflow:hidden;"></div>
+                    </div>
+                    <div style="height: 85%;width: 350px;margin: 0 28px;overflow-y: auto">
+                        <i-button type="text" @click="active" :noteBookId="item.NoteBookId" :noteId="item.Id" :key="item.Id" v-for="item in this.noteList" style="padding:0px;text-align: left">
+                            <Card style="height: 80px;width: 320px">
+                                <p>{{item.Title}}</p>
+                                <p style="margin-top: 10px">{{item.Content}}</p>
+                            </Card>
+                        </i-button>
+                    </div>
+                </div>
+
+                <div class="section-block" style="position: absolute;float: left;margin-left: 410px;" :style="{width:this.note_width + 'px'}">
+                    <Row>
+                        <i-col span="12" style="margin-top: 15px;">
+                            <i-select v-model="select_option" style="width:200px;height:70px;" :filterable="true">
+                                <i-option v-for="item in this.bookList" :value="item.Id" :key="item.Id">{{ item.Name }}</i-option>
+                            </i-select>
+                        </i-col>
+                        <i-col span="12" style="float: right;min-width: 200px;margin-top: 15px">
+                            <i-button type="ghost" size="large" @click="this.deleteActiveNote" :loading="button_isloading">
+                                <Icon type="trash-a" size="32"></Icon>
+                            </i-button>
+                            <i-button type="text">
+                                <Icon type="ios-information-outline" size="32"></Icon>
+                            </i-button>
+                        </i-col>
+                    </Row>
+
+                    <Row  style="padding-bottom: 30px">
+                        <i-col span="24">
+                            <div style="height:1px;width:100%;background:#d0d0d0;overflow:hidden;"></div>
+                        </i-col>
+                    </Row>
+
+                    <Row style="margin-bottom: 20px">
+                        <i-col span="24">
+                            <i-input style="border:0px;background:rgba(0, 0, 0, 0); " type="text" :maxlength="30" size="large" v-model="activeNote.Title" placeholder="请在这里输入标题"></i-input>
+                        </i-col>
+                    </Row>
+
+                    <Row>
+                        <i-col span="24">
+                            <i-input style="border:0px;background:rgba(0, 0, 0, 0); " :rows="15" type="textarea" v-model="activeNote.Content" placeholder="请输入内容"></i-input>
+                        </i-col>
+                    </Row>
+
+                    <Row style="margin-top: 20px">
+                        <i-col span="24">
+                            <i-button :loading="button_isloading" type="success" @click="saveNote">保存</i-button>
+                        </i-col>
+                    </Row>
+                </div>
+            </div>
+        </transition>
+
+        <transition name="my-move-left">
+            <div class="section-block position_ab" v-if="this.section_book_isshow">
+                <div style="height: 10%;min-height:80px;; margin: 35px 35px 0 35px">
+                    <h1 style="margin-bottom: 10px">笔记本</h1>
+                    <div style="height:1px;width:100%;background:#d0d0d0;overflow:hidden;margin: 5px;"></div>
+                    <div style="float: right;">
+                        <i-button type="text" @click="addNoteBook">
+                            <Icon type="android-add" size="32"></Icon>
+                        </i-button>
+                        <i-button type="text" @click="addGroup">
+                            <Icon type="person-add" size="32"></Icon>
+                        </i-button>
+                    </div>
+                </div>
+                <div style="height: 75%;min-height:300px;width: 340px;margin: 0 auto;overflow-y: auto;overflow-x: hidden">
+                    <Card v-for="item in this.default_bookList" style="margin-bottom: 5px;height: 68px;width: 300px;" :bookId="item.Id" :key="item.Id">
+                        <div style="float: left;margin-top: 8px;">{{item.Name}}</div>
+                        <div style="margin-left: 240px">
+                            <i-button type="text" @click="deleteNoteBook" :bookId="item.Id">
+                                <Icon type="ios-close-outline" size="16" :bookId="item.Id"></Icon>
+                            </i-button>
+                        </div>
+                    </Card>
+                    <div style="height:1px;width:100%;background:#d0d0d0;overflow:hidden;"></div>
+                    <Collapse v-for="items in groupList" :groupId="items.Id" :key="items.Id">
+                        <Panel key="items.Id">
+                            {{items.Name}}
+                            <div style="float: right;">
+                                <i-button type="text" @click="deleteGroup" :groupId="items.Id">
+                                    <Icon type="ios-close-outline" size="16" :groupId="items.Id"></Icon>
+                                </i-button>
+                            </div>
+                            <div slot="content">
+                                <Card v-for="item in items.NoteBookList" style="height: 68px;width: 300px" :bookId="item.Id" :key="item.Id">
+                                    <div style="float: left;margin-top: 7px;">{{item.Name}}</div>
+                                    <div style="margin-left: 240px">
+                                        <i-button type="text" @click="deleteNoteBook" :bookId="item.Id">
+                                            <Icon type="ios-close-outline" size="16" :bookId="item.Id"></Icon>
+                                        </i-button>
+                                    </div>
+                                </Card>
+                            </div>
+                        </Panel>
+                    </Collapse>
+                </div>
+            </div>
+        </transition>
+
+        <Modal v-model="addNoteBookModal" width="360">
+            <p slot="header" style="color:#2DBE60;text-align:center">
+                <Icon type="information-circled"></Icon>
+                <span>添加笔记本</span>
+            </p>
+            <div style="text-align:left">
+                <i-select v-model="select_group_option" style="width:200px;height:70px;" :filterable="true">
+                    <i-option :value="1" :key="1">添加到默认笔记本</i-option>
+                    <i-option v-for="item in this.groupList" :value="item.Id" :key="item.Id">{{ item.Name }}</i-option>
+                </i-select>
+                <i-input size="large" v-model="addNoteBook_Name" placeholder="请输入笔记本名"></i-input>
+            </div>
+            <div slot="footer">
+                <i-button type="success" size="large" long :loading="this.button_isloading" @click="addNoteBook_Ok">添加</i-button>
+            </div>
+        </Modal>
+        <Modal v-model="addGroupModal" width="360">
+            <p slot="header" style="color:#2DBE60;text-align:center">
+                <Icon type="information-circled"></Icon>
+                <span>添加分组</span>
+            </p>
+            <div style="text-align:left">
+                <i-input size="large" v-model="addGroup_Name" placeholder="请输入分组名"></i-input>
+            </div>
+            <div slot="footer">
+                <i-button type="success" size="large" long :loading="this.button_isloading" @click="addGroup_Ok">添加</i-button>
+            </div>
+        </Modal>
+    </div>
+    <script type="text/javascript" src="../static/script/home.js"></script>
+</body>
+</html>
+

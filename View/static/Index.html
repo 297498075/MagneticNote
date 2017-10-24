@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>工作必备效率应用 | MagneticNote</title>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/styles/fonts-zh-cn.css">
+    <link rel="stylesheet" href="../static/styles/style_yx.css">
+    <link rel="stylesheet" href="../static/styles/homepage.css">
+	<script type="text/javascript" src="../static/script/vue.js"></script>
+    <script type="text/javascript" src="../static/script/axios.js"></script>
+</head>
+
+<body class="nav_home-new global local_zh-cn china_site" data-lang="zh-cn" data-country="CN">
+    <div id="myBody">
+    <header id="header">
+        <div class="logo-container yx"><a href="#" class="header-sprite"><span>MagneticNote</span></a></div>
+        <a href="#" class="skip-link">跳转至主要内容</a>
+        <div class="right-panel">
+            <a href="../Login" class="cta view-pricing click_tracking" >登录</a>
+            <a @click="this.MoveToEnd" href="#" class="cta view-pricing click_tracking" >注册</a>
+            <a href="#" @click="header_menu=true" class="menu click_tracking"><span class="header-sprite"></span></a>
+        </div>
+    </header>
+    <transition name="fade">
+        <nav id="header_menu" class="drawer-nav" v-if="this.header_menu">
+            <div class="container">
+                <ul>
+                    <li><a href="../Login" class="js-sign-in-menu click_tracking" data-label="menu" data-action="sign-in">登录</a></li>
+                    <li><a @click="this.MoveToEnd" name="register_a" href="#" class="js-sign-up-menu click_tracking" data-label="menu" data-action="sign-up">注册</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#" class="click_tracking" data-label="menu" data-action="pricing">价格</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#" class="click_tracking" data-label="menu" data-action="expanded_plus">标准帐户</a></li>
+                    <li><a href="#" class="click_tracking" data-label="menu" data-action="expanded_premium">高级帐户</a></li>
+                    <li><a href="#" class="click_tracking" data-label="menu" data-action="expanded_business">企业版</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#" class="click_tracking" data-label="menu" data-action="expanded_support">帮助中心</a></li>
+                    <li><a href="#" class="click_tracking" data-label="menu" data-action="expanded_blog">博客</a></li>
+                </ul>
+                <ul class="download-item">
+                    <li><a href="#" class="download click_tracking" data-label="menu" data-action="download">下载MagneticNote</a></li>
+                    <li><a href="#" class="download download_tracking" data-label="Download WebClipper header">下载MagneticNote·剪藏</a></li>
+                </ul>
+                <a href="#" @click="header_menu=false" class="close click_tracking" data-label="Close header menu">关闭<span class="header-sprite"></span></a>
+            </div>
+        </nav>
+    </transition>
+    <section class="home-video-hero">
+        <div class="video-frame" data-video="/evernote.com/video/homepage/homepage-hero-video" data-image="/evernote.com/img/homepage/homepage-hero-video-desktop-still.jpg" data-mobile="/evernote.com/img/homepage/homepage-hero-video-mobile-still.jpg">
+            <div class="video-overlay"></div>
+            <video autoplay="autoplay" loop="loop">
+                <source class="webm" type="video/webm" src="../static/video/homepage-hero-video@2x.webm">
+            </video>
+            <img src="https://cdn1.evernote.com/evernote.com/img/homepage/homepage-hero-video-desktop-still@2x.jpg" class="mobile-fallback" alt="" style="display: none;">
+        </div>
+        <div class="content-container">
+            <div class="content">
+                <h1>记住一切</h1>
+                <p class="sub-copy">现代生活喧嚣繁杂，MagneticNote帮你轻松简化一切，让生活更美好，让工作更省力。</p>
+            </div>
+            <div class="sign-up-form">
+                <form id="create-account" method="post" class="registration">
+                    <div class="form-items">
+                        <fieldset>
+                            <legend>注册表格</legend>
+                            <div class="field-item">
+                                <label for="email" class="show-hide-label">邮箱</label>
+                                <input v-model="Email" type="email" name="email" id="email" data-validate="required, email, email_in_use" placeholder="邮箱" />
+                            </div>
+                            <div class="field-item">
+                                <label for="password-login" class="show-hide-label">密码</label>
+                                <input v-model="Password" type="password" name="password" id="password-login" data-validate="required, password" placeholder="密码" />
+                            </div>
+                        </fieldset>
+                        <div class="button-container">
+                            <p class="legal">点击注册即表明你同意本<a href="#">服务条款</a> 和<a href="#">隐私条款</a>。</p>
+                            <button @click="this.Register" type="button" id="button_register" name="register" class="button-pricing--premium">免费注册</button>
+                        </div>
+                        <p class="upgrade-toggle-info">
+                            或<a href="Login" class="login-link click_tracking" data-label="home" data-action="sign-in">登录</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="new-story">
+        <div class="row">
+            <div class="story-item image-on-right">
+                <div class="story-image note"></div>
+                <div class="story-content">
+                    <h2>随时记录一切</h2>
+                    <p>无论是点滴灵感、待办清单、或是会议记录、项目资料，MagneticNote在手，方便随时记录，永久保存内容。</p>
+                </div>
+            </div>
+            <div class="story-item image-on-left">
+                <div class="story-image sync"></div>
+                <div class="story-content">
+                    <h2>支持所有设备</h2>
+                    <p>你可以用MagneticNote保存一切，笔记会自动同步到所有设备。再也不用回想某个东西究竟存在哪台设备，因为它就在MagneticNote里。</p>
+                </div>
+            </div>
+            <div class="story-item image-on-right">
+                <div class="story-image find"></div>
+                <div class="story-content">
+                    <h2>快速查找所需</h2>
+                    <p>一个简单的搜索框，就能轻松找到你放进MagneticNote的一切。无论是笔记、图片甚至是附件内的文字，MagneticNote能迅速帮你搜索到任何记忆。</p>
+                </div>
+            </div>
+            <div class="story-item image-on-left">
+                <div class="story-image share"></div>
+                <div class="story-content">
+                    <h2>高效协作共享</h2>
+                    <p>无需跳出应用，即可基于笔记展开讨论，共享工作笔记本，合作完成团队目标。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register_bottom" class="bottom-cta">
+        <div class="row">
+            <h2>立即注册</h2>
+            <p>探索全新的笔记方式</p>
+            <form action="Register" id="create-account2" method="post" class="registration" novalidate="novalidate">
+                <div class="form-items">
+                    <fieldset>
+                        <legend>注册表格</legend>
+                        <div class="field-item left">
+                            <label for="email2" class="show-hide-label">邮箱</label>
+                            <input v-model="Email" type="email" name="email" id="email2" data-validate="required, email, email_in_use" placeholder="邮箱" />
+                        </div>
+                        <div class="field-item right">
+                            <label for="password-login2" class="show-hide-label">密码</label>
+                            <input v-model="Password" type="password" name="password" id="password-login2" data-validate="required, password" placeholder="密码" />
+                        </div>
+                    </fieldset>
+                    <div class="button-container">
+                        <input type="hidden" name="targetUrl" />
+                        <input type="hidden" name="origin" class="origin" />
+                        <input type="hidden" name="offer" class="offer" />
+                        <p class="legal">点击注册即表明你同意本<a href="#">服务条款</a>和<a href="#">隐私条款</a>。</p>
+                        <button @click="this.Register" type="button" id="button_register2" name="register" class="button-pricing--premium">免费注册</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer-v3">
+        <nav class="footer-nav">
+            <div class="row">
+
+                <div class="footer-sections-container">
+                    <div class="footer-nav-section">
+                        <p class="section-heading">MagneticNote</p>
+                        <ul class="section-links">
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="plans">价格</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="business">企业版</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="downloads">下载</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="products">产品</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <p class="section-heading">公司</p>
+                        <ul class="section-links">
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="blog">博客</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="careers">加入我们</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="market">Market</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <p class="section-heading">帮助中心</p>
+                        <ul class="section-links">
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="help_and_learning">帮助&amp;教程</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="forums">论坛</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <p class="section-heading">社区</p>
+                        <ul class="section-links">
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="certified-consultants">MagneticNote认证咨询师</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="community_leaders">印象大使</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="developers_api">开发者 (API)</a></li>
+                            <li><a href="#" class="click_tracking" data-label="footer" data-action="app_center">百宝箱</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-grey-bar">
+                <div class="row">
+
+                    <ul class="footer-legal-links">
+                        <li><a href="#" class="click_tracking" data-label="footer" data-action="legal">法律条款</a></li>
+                        <li><a href="#" class="click_tracking" data-label="footer" data-action="privacy">隐私</a></li>
+                        <li><a href="#" class="click_tracking" data-label="footer" data-action="security">安全性</a></li>
+                        <li><a href="#" class="click_tracking" data-label="footer" data-action="contact">联系我们</a></li>
+                    </ul>
+
+                    <p class="footer-copyright">版权所有 2017 MagneticNote Corporation. <span class="all-rights-reserved">保留一切权利.</span></p>
+
+                </div>
+
+                <div class="row">
+                    <div class="footer-china-gov-id">
+                        <span>MagneticNote</span>
+                        <!--<a href="#">京ICP备12019321号</a>
+                        <span>京公网安备11010802011736号</span>-->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </footer>
+    </div>
+	<script type="text/javascript" src="../static/script/index.js"></script>
+</body>
+</html>

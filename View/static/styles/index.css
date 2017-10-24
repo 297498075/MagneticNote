@@ -1,0 +1,127 @@
+
+        .layout {
+            border: 1px solid #d7dde4;
+            background: #f5f7f9;
+        }
+
+        .layout-logo {
+            width: 167px;
+            height: 36px;
+            background-image: url(../image/logo.png);
+            border-radius: 3px;
+            float: left;
+            position: relative;
+        }
+
+        .layout-nav {
+            width: 420px;
+            margin: 0 auto;
+        }
+
+        .layout-assistant {
+            width: 300px;
+            margin: 0 auto;
+            height: inherit;
+        }
+
+        .layout-breadcrumb {
+            padding: 10px 15px 0;
+        }
+
+        .layout-content {
+            min-height: 200px;
+            margin: 15px;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        .layout-content-main {
+            padding: 10px;
+        }
+
+        .layout-copy {
+            text-align: center;
+            padding: 10px 0 20px;
+            color: #9ea7b4;
+        }
+        #footer{
+            text-align: center;
+        }
+        #login-download{
+            text-align: center;
+            min-height: 160px;
+            margin: 0 auto;
+        }
+        #login-carousel{
+            width: 100%;
+            height: 0px
+        }
+        .ibg-bg{
+            width: 100%;
+            max-height:550px;
+            min-width:1000px;        
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+        }
+        .index-banner-1{
+            background: url(../image/index_bg1.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        .index-banner-2{
+            background: url(../image/index_bg2.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        .index-banner-3{
+            background: url(../image/index_bg3.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        .index-banner-4{
+            background: url(../image/index_bg4.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        .index-banner-5{
+            background: url(../image/index_bg5.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        #login-container{
+            padding-top:20px;
+            height:550px
+        }
+        .login-container-nav{
+            min-width:778px;
+        }
+        .login-container-font{
+            
+            font-family: "微软雅黑";
+            font-size: 32px;
+            color:#fff;
+        }
+        .login-container-nav-container{
+            min-width:650px;
+            font-size: 24px;
+            text-align: right;
+            padding-right: 35px;
+            padding-bottom: 10px;
+            float:right;
+        }
+        #login-download{
+            padding:30px;
+        }
+        #login-middle{
+            width: 332px;
+            height: 398px;
+            padding-top:50px;
+            float: right;
+        }
+        #login-middle-container{
+            padding-left:20px;
+            padding-right:20px;
+            height:180px
+        }
+        .nav-font{
+            font-size: 14px;
+            color: #fff;
+        }

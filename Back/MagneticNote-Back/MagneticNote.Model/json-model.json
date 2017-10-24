@@ -1,0 +1,48 @@
+﻿{
+  "Content": [
+    {
+      "DefaultBookGroup": [
+        {
+          "Name": "默认笔记本",
+          "Count": 8
+        }
+      ]
+    },
+    {
+      "OtherBookGroup": [
+        
+            {
+              "BookGroupName": "笔记本组1",
+              "NoteBook": [
+                {
+                  "Name": "新建笔记本",
+                  "Count": 1
+                },
+                {
+                  "Name": "22222",
+                  "Count": 0
+                },
+                {
+                  "Name": "33333",
+                  "Count": 0
+                }
+              ]
+            },
+            {
+              "BookGroupName": "笔记本组2",
+              "NoteBook": [
+                {
+                  "Name": "11111",
+                  "Count": 0
+                }
+              ]
+            },
+            {
+              "BookGroupName": "笔记本组3",
+              "NoteBook": []
+            }
+        
+      ]
+    }
+  ]
+}
