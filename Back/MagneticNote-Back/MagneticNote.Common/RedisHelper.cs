@@ -80,7 +80,7 @@ namespace Common
 
         public static bool Set<T>(string key, T t, TimeSpan ts)
         {
-            var str = JsonConvert.SerializeObject(t);
+            String str = JsonConvert.SerializeObject(t);
             using (var client = ConnectionMultiplexer.Connect(_conn))
             {
                 return client.GetDatabase().StringSet(key, str, ts);
@@ -91,7 +91,7 @@ namespace Common
         {
             using (var client = ConnectionMultiplexer.Connect(_conn))
             {
-                var strValue = client.GetDatabase().StringGet(key);
+                String strValue = client.GetDatabase().StringGet(key);
                 return string.IsNullOrEmpty(strValue) ? null : JsonConvert.DeserializeObject<T>(strValue);
             }
         }

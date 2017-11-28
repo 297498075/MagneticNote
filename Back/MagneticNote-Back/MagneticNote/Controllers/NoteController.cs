@@ -57,7 +57,7 @@ namespace MagneticNote.Controllers
 
         public ActionResult Add()
         {
-            Note note = JsonConvert.DeserializeObject<Note>(Request["Note"]);
+            Note note = JsonConvert.DeserializeObject<Note>(Request.Unvalidated["Note"]);
             note.CreateDate = DateTime.Now.GetDateTimeFormats()[2];
             note.UpdateDate = DateTime.Now.GetDateTimeFormats()[2];
             if (note != null)
@@ -105,7 +105,8 @@ namespace MagneticNote.Controllers
 
         public ActionResult Update()
         {
-            Note note = JsonConvert.DeserializeObject<Note>(Request["Note"]);
+            Request.ValidateInput();
+            Note note = JsonConvert.DeserializeObject<Note>(Request.Unvalidated["Note"]);
             note.UpdateDate = DateTime.Now.GetDateTimeFormats()[2];
             if (note != null && note.Id != 0)
             {

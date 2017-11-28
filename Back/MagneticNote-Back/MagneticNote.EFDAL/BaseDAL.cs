@@ -29,6 +29,7 @@ namespace MagneticNote.EFDAL
 
         public bool Delete(T obj)
         {
+            context.Set<T>().Attach(obj);
             context.Set<T>().Remove(obj);
             context.SaveChanges();
 
@@ -37,6 +38,7 @@ namespace MagneticNote.EFDAL
 
         public bool Update(T obj)
         {
+            context.Set<T>().Attach(obj);
             context.Entry(obj).State = EntityState.Modified;
             context.SaveChanges();
 

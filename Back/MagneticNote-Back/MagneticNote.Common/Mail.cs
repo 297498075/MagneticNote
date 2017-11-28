@@ -38,7 +38,7 @@ namespace Common
 
         public static String GetView(String name, String str)
         {
-            String val = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=gb18030'><meta name='referrer' content='origin'><meta name='renderer' content='webkit'><title>邮箱有效性验证</title><link rel='stylesheet' href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'></head><body><div class='mailcontainer' id='qqmail_mailcontainer'><section class='main'><header class='Row'><div class='col-xs-2'><img class='logo' src='http://"
+            String val = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=gb18030'><meta name='referrer' content='origin'><meta name='renderer' content='webkit'><title>邮箱有效性验证 - QQ邮箱</title><link rel='stylesheet' href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'></head><body><div class='mailcontainer' id='qqmail_mailcontainer'><section class='main'><header class='Row'><div class='col-xs-2'><img class='logo' src='http://"
                          + Info.ResourceAddress
                          + "/image/Log.png' width='68' height='68'></div><div class='title col-xs-8'><h1>邮箱验证</h1></div></header><h4>此邮件由系统自动生成，请勿回复。</h4><section class='content row'><p class='left-near'><a href='#' target='_blank'>"
                          + name
@@ -58,13 +58,13 @@ namespace Common
                          + str
                          + "</a></p><p>验证邮件<span class='bold'>24小时有效</span>。若已失效，请在<a href='http://"
                          + Info.Address
-                         + "' target='_blank'>官网</a>页面重新发送验证邮件</p><p class='left-near'>此致</p><p class='left-near'><span class='bold'>MagneticNote</span></p></section><footer><p><a href='http://"
+                         + "' target='_blank'>官网</a>页面重新发送验证邮件</p><p class='left-near'>此致</p><p class='left-near'><span class='bold'>MagneticNote(note.snkdev.top)</span></p></section><footer><p><a href='http://"
                          + Info.Address
                          + "/Login' target='_blank'>登录MagneticNote</a> |<a href='http://"
                          + Info.Address
                          + "/About' target='_blank'>关于我们</a> |<a href='http://"
                          + Info.Address
-                         + "/Agreement' target='_blank'>用户协议</a></p><p>客服QQ：<span style='border-bottom:1px dashed #ccc;z-index:1' t='7' onclick='return false;' data='2801385973'>无</span> &nbsp;&nbsp;免费咨询电话：无 &nbsp;&nbsp;客服邮箱：<a href='mailto:' target='_blank'>"+Info.EmailAddress+"</a></p></footer></section></div></body></html>";
+                         + "/Agreement' target='_blank'>用户协议</a></p><p>客服QQ：<span style='border-bottom:1px dashed #ccc;z-index:1' t='7' onclick='return false;' data='2801385973'>无</span> &nbsp;&nbsp;免费咨询电话：无 &nbsp;&nbsp;客服邮箱：<a href='mailto:chen29749@outlook.com' target='_blank'>chen29749@outl<wbr>ook.com</a></p></footer></section></div></body></html>";
 
             return val;
         }

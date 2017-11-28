@@ -64,3 +64,14 @@ C:\Users\Administrator\Downloads\MagneticNote-Back\MagneticNote-Back\MagneticNot
 C:\Users\Administrator\Downloads\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Downloads\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.dll
 C:\Users\Administrator\Downloads\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.pdb
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\MagneticNote.Common.dll
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\MagneticNote.Common.pdb
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Autofac.dll
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Newtonsoft.Json.dll
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\StackExchange.Redis.dll
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Autofac.xml
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Newtonsoft.Json.xml
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\bin\Release\StackExchange.Redis.xml
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.csprojResolveAssemblyReference.cache
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.dll
+C:\Users\匀强的磁场\Desktop\MagneticNote-Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.pdb
