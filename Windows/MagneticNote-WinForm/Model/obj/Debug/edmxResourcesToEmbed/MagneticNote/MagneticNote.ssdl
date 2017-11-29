@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagneticNote.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BookGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="NoteBookId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NoteBook">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BookGroupId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“MagneticNote.dbo.UserDefaultBookGroupId”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="UserDefaultBookGroupId">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="DefaultBookGroupId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DefaultBookGroupId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_BookGroupNoteBook">
+    <End Role="BookGroup" Type="Self.BookGroup" Multiplicity="1" />
+    <End Role="NoteBook" Type="Self.NoteBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteBook">
+        <PropertyRef Name="BookGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NoteBookNote">
+    <End Role="NoteBook" Type="Self.NoteBook" Multiplicity="1" />
+    <End Role="Note" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NoteBook">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="NoteBookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserBookGroup">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BookGroup" Type="Self.BookGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookGroup">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MagneticNoteStoreContainer">
+    <EntitySet Name="BookGroup" EntityType="Self.BookGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NoteBook" EntityType="Self.NoteBook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDefaultBookGroupId" EntityType="Self.UserDefaultBookGroupId" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserDefaultBookGroupId].[UserId] AS [UserId], 
+    [UserDefaultBookGroupId].[DefaultBookGroupId] AS [DefaultBookGroupId]
+    FROM [dbo].[UserDefaultBookGroupId] AS [UserDefaultBookGroupId]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_BookGroupNoteBook" Association="Self.FK_BookGroupNoteBook">
+      <End Role="BookGroup" EntitySet="BookGroup" />
+      <End Role="NoteBook" EntitySet="NoteBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NoteBookNote" Association="Self.FK_NoteBookNote">
+      <End Role="NoteBook" EntitySet="NoteBook" />
+      <End Role="Note" EntitySet="Note" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserBookGroup" Association="Self.FK_UserBookGroup">
+      <End Role="User" EntitySet="User" />
+      <End Role="BookGroup" EntitySet="BookGroup" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
