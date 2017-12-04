@@ -9,11 +9,8 @@ using Common;
 
 namespace BLL
 {
-    public class NoteBookBLL
+    public class NoteBookBLL : BaseBLL
     {
-        private NoteBookDAL noteBookDAL = new NoteBookDAL();
-        private NoteDAL noteDAL = new NoteDAL();
-
         public bool AddObject(NoteBook obj)
         {
             return noteBookDAL.AddObject(obj);

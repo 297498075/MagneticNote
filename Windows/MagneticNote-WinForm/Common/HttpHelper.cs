@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using System.Web;
 
 namespace Common
 {
@@ -13,12 +14,21 @@ namespace Common
     {
         public static String URL { get; set; }
 
-        public static String GetString(String requestData = null)
+        public static String GetString(IEnumerable<KeyValuePair<String, String>> requestData = null)
         {
             HttpWebRequest request = null;
             if (requestData != null)
             {
-                request = (HttpWebRequest)WebRequest.Create(URL + "?" + requestData);
+                StringBuilder data = new StringBuilder();
+                foreach (var i in requestData)
+                {
+                    data.Append("&" + i.Key + "=" + i.Value);
+                }
+
+                //url编码.
+                string encode = HttpUtility.UrlEncode(data.ToString(), Encoding.UTF8);
+
+                request = (HttpWebRequest)WebRequest.Create(URL + encode);
             }
             else
             {
@@ -33,13 +43,13 @@ namespace Common
             return sr.ReadToEnd();
         }
 
-        public static String PostString(byte[] responseData)
+        public static String PostString(byte[] requestData)
         {
             var request = (HttpWebRequest)WebRequest.Create(URL);
 
             request.Method = WebRequestMethods.Http.Post;
             request.ContentType = "application/x-www-form-urlencoded";
-            request.GetRequestStream().Write(responseData, 0, responseData.Length);
+            request.GetRequestStream().Write(requestData, 0, requestData.Length);
 
             var response = (HttpWebResponse)request.GetResponse();
 

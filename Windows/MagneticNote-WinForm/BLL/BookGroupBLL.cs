@@ -9,11 +9,8 @@ using Common;
 
 namespace BLL
 {
-    public class BookGroupBLL
+    public class BookGroupBLL : BaseBLL
     {
-        private BookGroupDAL bookGroupDAL = new BookGroupDAL();
-        private NoteBookDAL noteBookDAL = new NoteBookDAL();
-
         public bool AddObject(object obj)
         {
             if (bookGroupDAL.AddObject(obj))

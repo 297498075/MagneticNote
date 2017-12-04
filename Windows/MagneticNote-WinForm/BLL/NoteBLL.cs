@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
-using Model.MagneticNote;
+using MagneticNote.Model;
+using Newtonsoft.Json;
 
 namespace BLL
 {
-    public class NoteBLL
+    public class NoteBLL : BaseBLL<Note>
     {
-        private NoteDAL noteDAL = new NoteDAL();
-        private NoteBookDAL noteBookDAL = new NoteBookDAL();
-
         public bool AddObject(object obj)
         {
-            if (noteDAL.AddObject(obj))
+            if (Post("Note/Add", JsonConvert.SerializeObject(new { Note = obj})))
                 return true;
             else
                 return false;
