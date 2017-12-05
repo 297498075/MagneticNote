@@ -16,23 +16,21 @@ namespace MagneticNote.Controllers
             this.UserBLL = UserBLL;
         }
 
-        public ActionResult Get()
+        public ActionResult Get(String Email, String Password, String Account)
         {
-            String email = Request["Email"] as String;
-            String password = Request["Password"] as String;
-            if (email != null  && password != null)
+            if (Email != null  && Password != null)
             {
-                ResponseHelper.WriteObject(Response, "User", UserBLL.SelectByEmail(email, password));
-            }
-            String account = Request["Account"] as String;
-            if (account != null && password != null)
-            {
-                ResponseHelper.WriteObject(Response, "User", UserBLL.SelectByAccount(account, password));
+                ResponseHelper.WriteObject(Response, "User", UserBLL.SelectByEmail(Email, Password));
             }
 
-            if(email != null)
+            if (Account != null && Password != null)
             {
-                ResponseHelper.WriteObject(Response, "User", UserBLL.SelectByEmail(email));
+                ResponseHelper.WriteObject(Response, "User", UserBLL.SelectByAccount(Account, Password));
+            }
+
+            if(Email != null)
+            {
+                ResponseHelper.WriteObject(Response, "User", UserBLL.SelectByEmail(Email));
             }
             else
             {
@@ -42,9 +40,9 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult Add()
+        public ActionResult Add(String User)
         {
-            User user = JsonConvert.DeserializeObject<User>(Request["User"]);
+            User user = JsonConvert.DeserializeObject<User>(User);
 
             if (user != null)
             {
@@ -59,15 +57,15 @@ namespace MagneticNote.Controllers
             }
             else
             {
-                ResponseHelper.WriteNull(Response);;
+                ResponseHelper.WriteNull(Response);
             }
-            ;
+            
             return null;
         }
 
-        public ActionResult Update()
+        public ActionResult Update(String User)
         {
-            User user = JsonConvert.DeserializeObject<User>(Request["User"]);
+            User user = JsonConvert.DeserializeObject<User>(User);
 
             if (user != null)
             {
@@ -82,9 +80,9 @@ namespace MagneticNote.Controllers
             }
             else
             {
-                ResponseHelper.WriteNull(Response);;
+                ResponseHelper.WriteNull(Response);
             }
-            ;
+            
             return null;
         }
     }

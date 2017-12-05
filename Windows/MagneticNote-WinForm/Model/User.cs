@@ -13,4 +13,14 @@ namespace MagneticNote.Model
         public string Password { get; set; }
         public string Account { get; set; }
     }
+
+    public class UserValue
+    {
+        public User User { get; set; }
+    }
+
+    public class UserValues
+    {
+        public IList<User> User { get; set; }
+    }
 }

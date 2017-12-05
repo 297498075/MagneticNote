@@ -30,22 +30,19 @@ namespace MagneticNote.Controllers
         public ActionResult Get()
         {
             Response.Write("Ready to complete.");
-            ;
             return null;
         }
 
-        public ActionResult GetDefaultNote()
+        public ActionResult GetDefaultNote(String UserId, String Column)
         {
-            String userId = Request["UserId"];
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(UserId))
             {
-                String column = Request["Column"];
-                if (!String.IsNullOrEmpty(column))
+                if (!String.IsNullOrEmpty(Column))
                 {
-                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(userId), Convert.ToInt32(column)));
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(UserId), Convert.ToInt32(Column)));
                 }
 
-                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(userId)));
+                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(UserId)));
             }
 
             Note[] noteList = { new Note() { Title = "欢迎", Content = "欢迎使用MagneticNote笔记本" } };
@@ -54,55 +51,52 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult GetAllNoteBook(String userId)
+        public ActionResult GetAllNoteBook(String UserId)
         {
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(UserId))
             {
-                ResponseHelper.WriteList(Response, "NoteBookList", NoteBookBLL.SelectByUserId(Convert.ToInt32(userId),true));
+                ResponseHelper.WriteList(Response, "NoteBookList", NoteBookBLL.SelectByUserId(Convert.ToInt32(UserId),true));
             }
 
             ResponseHelper.WriteNull(Response);
             return null;
         }
 
-        public ActionResult GetBookGroupContainsBook()
+        public ActionResult GetBookGroupContainsBook(String UserId)
         {
-            String userId = Request["UserId"];
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(UserId))
             {
-                ResponseHelper.WriteList(Response, "BookGroupList", BookGroupBLL.SelectByUserId(Convert.ToInt32(userId), true));
+                ResponseHelper.WriteList(Response, "BookGroupList", BookGroupBLL.SelectByUserId(Convert.ToInt32(UserId), true));
             }
 
             ResponseHelper.WriteNull(Response);
             return null;
         }
 
-        public ActionResult SendRegisterEmail()
+        public ActionResult SendRegisterEmail(String Email, String Password)
         {
-            String email = Request["Email"];
-            String password = Request["Password"];
-            if (email == null || password == null)
+            if (Email == null || Password == null)
             {
                 ResponseHelper.WriteFalse(Response);
             }
             else
             {
-                User user = new User() { Email = email, Password = password, Account = email };
+                User user = new User() { Email = Email, Password = Password, Account = Email };
                 String userKey = JsonConvert.SerializeObject(user);
                 String key = RedisHelper.StringGet(userKey);
 
                 if(key != null)
                 {
-                    Mail.Send(email, Mail.GetView(email,key));
+                    Mail.Send(Email, Mail.GetView(Email, key));
                     ResponseHelper.WriteTrue(Response);
                 }
-                else if(UserBLL.SelectByEmail(email).Id==0)
+                else if(UserBLL.SelectByEmail(Email).Id==0)
                 {
                     key = getStr(false,16);
                     if (RedisHelper.StringSet(userKey, key, new TimeSpan(1, 0, 0, 0)) &&
                         RedisHelper.StringSet(key, userKey, new TimeSpan(1, 0, 0, 0)))
                     {
-                        Mail.Send(email, Mail.GetView(email, key));
+                        Mail.Send(Email, Mail.GetView(Email, key));
                         ResponseHelper.WriteTrue(Response);
                     }
                     else
@@ -118,9 +112,9 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult RegisterValidate()
+        public ActionResult RegisterValidate(String ValidateKey)
         {
-            String key = Request["ValidateKey"];
+            String key = ValidateKey;
 
             if(key == null)
             {

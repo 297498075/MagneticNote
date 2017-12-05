@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("节点0");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("节点3");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("节点6");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("节点7");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("节点4", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("节点5");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("节点1", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode13,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("节点2");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("节点0");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("节点3");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("节点6");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("节点7");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("节点4", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("节点5");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("节点1", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode5,
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("节点2");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.panel_noteBook = new System.Windows.Forms.Panel();
             this.treeView_BookGroupAndNoteBook = new System.Windows.Forms.TreeView();
@@ -62,7 +62,6 @@
             this.ToolStripMenuItem_CreateDate = new System.Windows.Forms.ToolStripMenuItem();
             this.button_Command = new System.Windows.Forms.Button();
             this.button_NoteInfo = new System.Windows.Forms.Button();
-            this.text_content = new System.Windows.Forms.TextBox();
             this.text_title = new System.Windows.Forms.TextBox();
             this.panel_tool = new System.Windows.Forms.Panel();
             this.menuStrip_tool = new System.Windows.Forms.MenuStrip();
@@ -274,6 +273,7 @@
             this.共享设置OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator40 = new System.Windows.Forms.ToolStripSeparator();
             this.属性OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.web_content = new System.Windows.Forms.WebBrowser();
             this.panel_noteBook.SuspendLayout();
             this.panel_NoteList.SuspendLayout();
             this.panel_content.SuspendLayout();
@@ -320,26 +320,26 @@
             this.treeView_BookGroupAndNoteBook.Location = new System.Drawing.Point(0, 0);
             this.treeView_BookGroupAndNoteBook.Margin = new System.Windows.Forms.Padding(0);
             this.treeView_BookGroupAndNoteBook.Name = "treeView_BookGroupAndNoteBook";
-            treeNode9.Name = "节点0";
-            treeNode9.Text = "节点0";
-            treeNode10.Name = "节点3";
-            treeNode10.Text = "节点3";
-            treeNode11.Name = "节点6";
-            treeNode11.Text = "节点6";
-            treeNode12.Name = "节点7";
-            treeNode12.Text = "节点7";
-            treeNode13.Name = "节点4";
-            treeNode13.Text = "节点4";
-            treeNode14.Name = "节点5";
-            treeNode14.Text = "节点5";
-            treeNode15.Name = "节点1";
-            treeNode15.Text = "节点1";
-            treeNode16.Name = "节点2";
-            treeNode16.Text = "节点2";
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "节点0";
+            treeNode2.Name = "节点3";
+            treeNode2.Text = "节点3";
+            treeNode3.Name = "节点6";
+            treeNode3.Text = "节点6";
+            treeNode4.Name = "节点7";
+            treeNode4.Text = "节点7";
+            treeNode5.Name = "节点4";
+            treeNode5.Text = "节点4";
+            treeNode6.Name = "节点5";
+            treeNode6.Text = "节点5";
+            treeNode7.Name = "节点1";
+            treeNode7.Text = "节点1";
+            treeNode8.Name = "节点2";
+            treeNode8.Text = "节点2";
             this.treeView_BookGroupAndNoteBook.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode15,
-            treeNode16});
+            treeNode1,
+            treeNode7,
+            treeNode8});
             this.treeView_BookGroupAndNoteBook.ShowLines = false;
             this.treeView_BookGroupAndNoteBook.ShowNodeToolTips = true;
             this.treeView_BookGroupAndNoteBook.ShowRootLines = false;
@@ -396,11 +396,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_content.BackColor = System.Drawing.Color.White;
             this.panel_content.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_content.Controls.Add(this.web_content);
             this.panel_content.Controls.Add(this.panel_Note_tool);
             this.panel_content.Controls.Add(this.panel_Note_top);
             this.panel_content.Controls.Add(this.button_Command);
             this.panel_content.Controls.Add(this.button_NoteInfo);
-            this.panel_content.Controls.Add(this.text_content);
             this.panel_content.Controls.Add(this.text_title);
             this.panel_content.Location = new System.Drawing.Point(600, 80);
             this.panel_content.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -546,19 +546,6 @@
             this.button_NoteInfo.Size = new System.Drawing.Size(40, 38);
             this.button_NoteInfo.TabIndex = 2;
             this.button_NoteInfo.UseVisualStyleBackColor = false;
-            // 
-            // text_content
-            // 
-            this.text_content.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.text_content.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.text_content.Location = new System.Drawing.Point(4, 120);
-            this.text_content.Margin = new System.Windows.Forms.Padding(0);
-            this.text_content.Multiline = true;
-            this.text_content.Name = "text_content";
-            this.text_content.Size = new System.Drawing.Size(739, 531);
-            this.text_content.TabIndex = 1;
             // 
             // text_title
             // 
@@ -1440,37 +1427,37 @@
             this.DToolStripMenuItem_BookGroup_DeleteBookGroup,
             this.样式ToolStripMenuItem});
             this.contextMenuStrip_Group.Name = "contextMenuStrip_Group";
-            this.contextMenuStrip_Group.Size = new System.Drawing.Size(172, 114);
+            this.contextMenuStrip_Group.Size = new System.Drawing.Size(166, 106);
             // 
             // NToolStripMenuItem_BookGroup_CreateNoteBook
             // 
             this.NToolStripMenuItem_BookGroup_CreateNoteBook.Name = "NToolStripMenuItem_BookGroup_CreateNoteBook";
-            this.NToolStripMenuItem_BookGroup_CreateNoteBook.Size = new System.Drawing.Size(171, 26);
+            this.NToolStripMenuItem_BookGroup_CreateNoteBook.Size = new System.Drawing.Size(165, 24);
             this.NToolStripMenuItem_BookGroup_CreateNoteBook.Text = "创建笔记本...";
             this.NToolStripMenuItem_BookGroup_CreateNoteBook.Click += new System.EventHandler(this.NToolStripMenuItem_BookGroup_CreateNoteBook_Click);
             // 
             // toolStripSeparator32
             // 
             this.toolStripSeparator32.Name = "toolStripSeparator32";
-            this.toolStripSeparator32.Size = new System.Drawing.Size(168, 6);
+            this.toolStripSeparator32.Size = new System.Drawing.Size(162, 6);
             // 
             // 删除FToolStripMenuItem
             // 
             this.删除FToolStripMenuItem.Name = "删除FToolStripMenuItem";
-            this.删除FToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.删除FToolStripMenuItem.Size = new System.Drawing.Size(165, 24);
             this.删除FToolStripMenuItem.Text = "重命名(R)";
             // 
             // DToolStripMenuItem_BookGroup_DeleteBookGroup
             // 
             this.DToolStripMenuItem_BookGroup_DeleteBookGroup.Name = "DToolStripMenuItem_BookGroup_DeleteBookGroup";
-            this.DToolStripMenuItem_BookGroup_DeleteBookGroup.Size = new System.Drawing.Size(171, 26);
+            this.DToolStripMenuItem_BookGroup_DeleteBookGroup.Size = new System.Drawing.Size(165, 24);
             this.DToolStripMenuItem_BookGroup_DeleteBookGroup.Text = "删除(D)";
             this.DToolStripMenuItem_BookGroup_DeleteBookGroup.Click += new System.EventHandler(this.DToolStripMenuItem_BookGroup_DeleteBookGroup_Click);
             // 
             // 样式ToolStripMenuItem
             // 
             this.样式ToolStripMenuItem.Name = "样式ToolStripMenuItem";
-            this.样式ToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.样式ToolStripMenuItem.Size = new System.Drawing.Size(165, 24);
             this.样式ToolStripMenuItem.Text = "样式(T)";
             // 
             // contextMenuStrip_NoteBook
@@ -1493,52 +1480,52 @@
             this.移动到笔记本MToolStripMenuItem,
             this.删除笔记FToolStripMenuItem});
             this.contextMenuStrip_NoteBook.Name = "contextMenuStrip_NoteBook";
-            this.contextMenuStrip_NoteBook.Size = new System.Drawing.Size(238, 314);
+            this.contextMenuStrip_NoteBook.Size = new System.Drawing.Size(232, 292);
             // 
             // 新建笔记NToolStripMenuItem
             // 
             this.新建笔记NToolStripMenuItem.Name = "新建笔记NToolStripMenuItem";
-            this.新建笔记NToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.新建笔记NToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.新建笔记NToolStripMenuItem.Text = "新建笔记(N)";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(234, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(228, 6);
             // 
             // 打开笔记OToolStripMenuItem
             // 
             this.打开笔记OToolStripMenuItem.Name = "打开笔记OToolStripMenuItem";
-            this.打开笔记OToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.打开笔记OToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.打开笔记OToolStripMenuItem.Text = "打开笔记(O)";
             // 
             // 打印笔记PToolStripMenuItem
             // 
             this.打印笔记PToolStripMenuItem.Name = "打印笔记PToolStripMenuItem";
-            this.打印笔记PToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.打印笔记PToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.打印笔记PToolStripMenuItem.Text = "打印笔记(P)";
             // 
             // 导出笔记ToolStripMenuItem
             // 
             this.导出笔记ToolStripMenuItem.Name = "导出笔记ToolStripMenuItem";
-            this.导出笔记ToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.导出笔记ToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.导出笔记ToolStripMenuItem.Text = "导出笔记(X)";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(234, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(228, 6);
             // 
             // 添加到快捷方式ToolStripMenuItem
             // 
             this.添加到快捷方式ToolStripMenuItem.Name = "添加到快捷方式ToolStripMenuItem";
-            this.添加到快捷方式ToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.添加到快捷方式ToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.添加到快捷方式ToolStripMenuItem.Text = "添加到快捷方式";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(234, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(228, 6);
             // 
             // 共享HToolStripMenuItem
             // 
@@ -1546,7 +1533,7 @@
             this.共享笔记HToolStripMenuItem,
             this.电子邮件MToolStripMenuItem});
             this.共享HToolStripMenuItem.Name = "共享HToolStripMenuItem";
-            this.共享HToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.共享HToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.共享HToolStripMenuItem.Text = "共享(H)";
             // 
             // 共享笔记HToolStripMenuItem
@@ -1564,36 +1551,36 @@
             // 复制笔记本内部链接ToolStripMenuItem
             // 
             this.复制笔记本内部链接ToolStripMenuItem.Name = "复制笔记本内部链接ToolStripMenuItem";
-            this.复制笔记本内部链接ToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.复制笔记本内部链接ToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.复制笔记本内部链接ToolStripMenuItem.Text = "复制笔记本内部链接(L)";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(234, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(228, 6);
             // 
             // 复制到笔记本ToolStripMenuItem
             // 
             this.复制到笔记本ToolStripMenuItem.Name = "复制到笔记本ToolStripMenuItem";
-            this.复制到笔记本ToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.复制到笔记本ToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.复制到笔记本ToolStripMenuItem.Text = "复制到笔记本(C)...";
             // 
             // 复制笔记DToolStripMenuItem
             // 
             this.复制笔记DToolStripMenuItem.Name = "复制笔记DToolStripMenuItem";
-            this.复制笔记DToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.复制笔记DToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.复制笔记DToolStripMenuItem.Text = "复制笔记(D)...";
             // 
             // 移动到笔记本MToolStripMenuItem
             // 
             this.移动到笔记本MToolStripMenuItem.Name = "移动到笔记本MToolStripMenuItem";
-            this.移动到笔记本MToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.移动到笔记本MToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.移动到笔记本MToolStripMenuItem.Text = "移动到笔记本(M)";
             // 
             // 删除笔记FToolStripMenuItem
             // 
             this.删除笔记FToolStripMenuItem.Name = "删除笔记FToolStripMenuItem";
-            this.删除笔记FToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.删除笔记FToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.删除笔记FToolStripMenuItem.Text = "删除笔记(F)";
             // 
             // notifyIcon
@@ -1618,54 +1605,54 @@
             this.选项OToolStripMenuItem,
             this.退出MagneticNoteQToolStripMenuItem});
             this.contextMenuStrip_notifyIcon.Name = "contextMenuStrip_notifyIcon";
-            this.contextMenuStrip_notifyIcon.Size = new System.Drawing.Size(269, 224);
+            this.contextMenuStrip_notifyIcon.Size = new System.Drawing.Size(263, 208);
             // 
             // 打开MagneticNoteFToolStripMenuItem
             // 
             this.打开MagneticNoteFToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.打开MagneticNoteFToolStripMenuItem.Name = "打开MagneticNoteFToolStripMenuItem";
-            this.打开MagneticNoteFToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.打开MagneticNoteFToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.打开MagneticNoteFToolStripMenuItem.Text = "打开MagneticNote(M)";
             // 
             // 在MagneticNote中搜索FToolStripMenuItem
             // 
             this.在MagneticNote中搜索FToolStripMenuItem.Name = "在MagneticNote中搜索FToolStripMenuItem";
-            this.在MagneticNote中搜索FToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.在MagneticNote中搜索FToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.在MagneticNote中搜索FToolStripMenuItem.Text = "在MagneticNote中搜索(F)";
             // 
             // toolStripMenuItem_NewBook
             // 
             this.toolStripMenuItem_NewBook.Name = "toolStripMenuItem_NewBook";
-            this.toolStripMenuItem_NewBook.Size = new System.Drawing.Size(268, 26);
+            this.toolStripMenuItem_NewBook.Size = new System.Drawing.Size(262, 24);
             this.toolStripMenuItem_NewBook.Text = "新建笔记(N)";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(265, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(259, 6);
             // 
             // 截屏SToolStripMenuItem
             // 
             this.截屏SToolStripMenuItem.Name = "截屏SToolStripMenuItem";
-            this.截屏SToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.截屏SToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.截屏SToolStripMenuItem.Text = "截屏(S)";
             // 
             // 保存所选内容CToolStripMenuItem
             // 
             this.保存所选内容CToolStripMenuItem.Name = "保存所选内容CToolStripMenuItem";
-            this.保存所选内容CToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.保存所选内容CToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.保存所选内容CToolStripMenuItem.Text = "保存所选内容(C)";
             // 
             // 粘贴到MagneticNotePToolStripMenuItem
             // 
             this.粘贴到MagneticNotePToolStripMenuItem.Name = "粘贴到MagneticNotePToolStripMenuItem";
-            this.粘贴到MagneticNotePToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.粘贴到MagneticNotePToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.粘贴到MagneticNotePToolStripMenuItem.Text = "粘贴到MagneticNote(P)";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(265, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(259, 6);
             // 
             // 选项OToolStripMenuItem
             // 
@@ -1675,7 +1662,7 @@
             this.配置热键HToolStripMenuItem,
             this.magneticNote图标默认动作EToolStripMenuItem});
             this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
-            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.选项OToolStripMenuItem.Text = "选项(O)";
             // 
             // windows登录后自动启动LToolStripMenuItem
@@ -1758,7 +1745,7 @@
             // 退出MagneticNoteQToolStripMenuItem
             // 
             this.退出MagneticNoteQToolStripMenuItem.Name = "退出MagneticNoteQToolStripMenuItem";
-            this.退出MagneticNoteQToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.退出MagneticNoteQToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.退出MagneticNoteQToolStripMenuItem.Text = "退出MagneticNote(Q)";
             // 
             // contextMenuStrip_GroupNoteBook
@@ -1783,54 +1770,54 @@
             this.toolStripSeparator46,
             this.属性PToolStripMenuItem});
             this.contextMenuStrip_GroupNoteBook.Name = "contextMenuStrip_GroupNoteBook";
-            this.contextMenuStrip_GroupNoteBook.Size = new System.Drawing.Size(211, 326);
+            this.contextMenuStrip_GroupNoteBook.Size = new System.Drawing.Size(205, 304);
             // 
             // ToolStripMenuItem_BookGroup_CreateNoteBook
             // 
             this.ToolStripMenuItem_BookGroup_CreateNoteBook.Name = "ToolStripMenuItem_BookGroup_CreateNoteBook";
-            this.ToolStripMenuItem_BookGroup_CreateNoteBook.Size = new System.Drawing.Size(210, 26);
+            this.ToolStripMenuItem_BookGroup_CreateNoteBook.Size = new System.Drawing.Size(204, 24);
             this.ToolStripMenuItem_BookGroup_CreateNoteBook.Text = "创建笔记本...";
             this.ToolStripMenuItem_BookGroup_CreateNoteBook.Click += new System.EventHandler(this.ToolStripMenuItem_BookGroup_CreateNoteBook_Click);
             // 
             // toolStripSeparator41
             // 
             this.toolStripSeparator41.Name = "toolStripSeparator41";
-            this.toolStripSeparator41.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator41.Size = new System.Drawing.Size(201, 6);
             // 
             // 重命名RToolStripMenuItem1
             // 
             this.重命名RToolStripMenuItem1.Name = "重命名RToolStripMenuItem1";
-            this.重命名RToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.重命名RToolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
             this.重命名RToolStripMenuItem1.Text = "重命名(R)";
             // 
             // DToolStripMenuItem_BookGroupDeleteNoteBook
             // 
             this.DToolStripMenuItem_BookGroupDeleteNoteBook.Name = "DToolStripMenuItem_BookGroupDeleteNoteBook";
-            this.DToolStripMenuItem_BookGroupDeleteNoteBook.Size = new System.Drawing.Size(210, 26);
+            this.DToolStripMenuItem_BookGroupDeleteNoteBook.Size = new System.Drawing.Size(204, 24);
             this.DToolStripMenuItem_BookGroupDeleteNoteBook.Text = "删除(D)...";
             this.DToolStripMenuItem_BookGroupDeleteNoteBook.Click += new System.EventHandler(this.DToolStripMenuItem_BookGroupDeleteNoteBook_Click);
             // 
             // 样式TToolStripMenuItem1
             // 
             this.样式TToolStripMenuItem1.Name = "样式TToolStripMenuItem1";
-            this.样式TToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.样式TToolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
             this.样式TToolStripMenuItem1.Text = "样式(T)...";
             // 
             // toolStripSeparator42
             // 
             this.toolStripSeparator42.Name = "toolStripSeparator42";
-            this.toolStripSeparator42.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator42.Size = new System.Drawing.Size(201, 6);
             // 
             // 保存查看设置ToolStripMenuItem1
             // 
             this.保存查看设置ToolStripMenuItem1.Name = "保存查看设置ToolStripMenuItem1";
-            this.保存查看设置ToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.保存查看设置ToolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
             this.保存查看设置ToolStripMenuItem1.Text = "保存 查看设置";
             // 
             // toolStripSeparator43
             // 
             this.toolStripSeparator43.Name = "toolStripSeparator43";
-            this.toolStripSeparator43.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator43.Size = new System.Drawing.Size(201, 6);
             // 
             // 添加到笔记本组ToolStripMenuItem
             // 
@@ -1839,7 +1826,7 @@
             this.toolStripSeparator47,
             this.NToolStripMenuItem_CreateGroup});
             this.添加到笔记本组ToolStripMenuItem.Name = "添加到笔记本组ToolStripMenuItem";
-            this.添加到笔记本组ToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.添加到笔记本组ToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
             this.添加到笔记本组ToolStripMenuItem.Text = "添加到笔记本组(A)";
             // 
             // 开发中ToolStripMenuItem
@@ -1863,46 +1850,46 @@
             // toolStripSeparator44
             // 
             this.toolStripSeparator44.Name = "toolStripSeparator44";
-            this.toolStripSeparator44.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator44.Size = new System.Drawing.Size(201, 6);
             // 
             // 添加到快捷方式SToolStripMenuItem1
             // 
             this.添加到快捷方式SToolStripMenuItem1.Name = "添加到快捷方式SToolStripMenuItem1";
-            this.添加到快捷方式SToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.添加到快捷方式SToolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
             this.添加到快捷方式SToolStripMenuItem1.Text = "添加到快捷方式(S)";
             // 
             // toolStripSeparator45
             // 
             this.toolStripSeparator45.Name = "toolStripSeparator45";
-            this.toolStripSeparator45.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator45.Size = new System.Drawing.Size(201, 6);
             // 
             // 导出笔记EToolStripMenuItem1
             // 
             this.导出笔记EToolStripMenuItem1.Name = "导出笔记EToolStripMenuItem1";
-            this.导出笔记EToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.导出笔记EToolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
             this.导出笔记EToolStripMenuItem1.Text = "导出笔记(E)...";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(210, 26);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(204, 24);
             this.toolStripMenuItem3.Text = "共享笔记本(H)...";
             // 
             // 共享设置OToolStripMenuItem1
             // 
             this.共享设置OToolStripMenuItem1.Name = "共享设置OToolStripMenuItem1";
-            this.共享设置OToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.共享设置OToolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
             this.共享设置OToolStripMenuItem1.Text = "共享设置(O)...";
             // 
             // toolStripSeparator46
             // 
             this.toolStripSeparator46.Name = "toolStripSeparator46";
-            this.toolStripSeparator46.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator46.Size = new System.Drawing.Size(201, 6);
             // 
             // 属性PToolStripMenuItem
             // 
             this.属性PToolStripMenuItem.Name = "属性PToolStripMenuItem";
-            this.属性PToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.属性PToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
             this.属性PToolStripMenuItem.Text = "属性(P)";
             // 
             // contextMenuStrip_RootGroup
@@ -1915,35 +1902,35 @@
             this.toolStripSeparator34,
             this.导出笔记本EToolStripMenuItem});
             this.contextMenuStrip_RootGroup.Name = "contextMenuStrip_GroupNoteBook";
-            this.contextMenuStrip_RootGroup.Size = new System.Drawing.Size(190, 94);
+            this.contextMenuStrip_RootGroup.Size = new System.Drawing.Size(184, 88);
             // 
             // ToolStripMenuItem_RootGroup_CreateNoteBook
             // 
             this.ToolStripMenuItem_RootGroup_CreateNoteBook.Name = "ToolStripMenuItem_RootGroup_CreateNoteBook";
-            this.ToolStripMenuItem_RootGroup_CreateNoteBook.Size = new System.Drawing.Size(189, 26);
+            this.ToolStripMenuItem_RootGroup_CreateNoteBook.Size = new System.Drawing.Size(183, 24);
             this.ToolStripMenuItem_RootGroup_CreateNoteBook.Text = "创建笔记本...";
             this.ToolStripMenuItem_RootGroup_CreateNoteBook.Click += new System.EventHandler(this.ToolStripMenuItem_RootGroup_CreateNoteBook_Click);
             // 
             // toolStripSeparator33
             // 
             this.toolStripSeparator33.Name = "toolStripSeparator33";
-            this.toolStripSeparator33.Size = new System.Drawing.Size(186, 6);
+            this.toolStripSeparator33.Size = new System.Drawing.Size(180, 6);
             // 
             // 查找笔记本FToolStripMenuItem
             // 
             this.查找笔记本FToolStripMenuItem.Name = "查找笔记本FToolStripMenuItem";
-            this.查找笔记本FToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.查找笔记本FToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.查找笔记本FToolStripMenuItem.Text = "查找笔记本(F)...";
             // 
             // toolStripSeparator34
             // 
             this.toolStripSeparator34.Name = "toolStripSeparator34";
-            this.toolStripSeparator34.Size = new System.Drawing.Size(186, 6);
+            this.toolStripSeparator34.Size = new System.Drawing.Size(180, 6);
             // 
             // 导出笔记本EToolStripMenuItem
             // 
             this.导出笔记本EToolStripMenuItem.Name = "导出笔记本EToolStripMenuItem";
-            this.导出笔记本EToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.导出笔记本EToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.导出笔记本EToolStripMenuItem.Text = "导出笔记本(E)...";
             // 
             // contextMenuStrip_Group_NoteBook
@@ -1968,104 +1955,112 @@
             this.toolStripSeparator40,
             this.属性OToolStripMenuItem});
             this.contextMenuStrip_Group_NoteBook.Name = "contextMenuStrip_GroupNoteBook";
-            this.contextMenuStrip_Group_NoteBook.Size = new System.Drawing.Size(284, 326);
+            this.contextMenuStrip_Group_NoteBook.Size = new System.Drawing.Size(278, 304);
             // 
             // 在中创建笔记本NToolStripMenuItem
             // 
             this.在中创建笔记本NToolStripMenuItem.Name = "在中创建笔记本NToolStripMenuItem";
-            this.在中创建笔记本NToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.在中创建笔记本NToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.在中创建笔记本NToolStripMenuItem.Text = "在当前分组中创建笔记本(N)...";
             // 
             // toolStripSeparator35
             // 
             this.toolStripSeparator35.Name = "toolStripSeparator35";
-            this.toolStripSeparator35.Size = new System.Drawing.Size(280, 6);
+            this.toolStripSeparator35.Size = new System.Drawing.Size(274, 6);
             // 
             // 重命名RToolStripMenuItem
             // 
             this.重命名RToolStripMenuItem.Name = "重命名RToolStripMenuItem";
-            this.重命名RToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.重命名RToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.重命名RToolStripMenuItem.Text = "重命名(R)";
             // 
             // DToolStripMenuItem_BookGroup_DeleteNoteBook
             // 
             this.DToolStripMenuItem_BookGroup_DeleteNoteBook.Name = "DToolStripMenuItem_BookGroup_DeleteNoteBook";
-            this.DToolStripMenuItem_BookGroup_DeleteNoteBook.Size = new System.Drawing.Size(283, 26);
+            this.DToolStripMenuItem_BookGroup_DeleteNoteBook.Size = new System.Drawing.Size(277, 24);
             this.DToolStripMenuItem_BookGroup_DeleteNoteBook.Text = "删除(D)...";
             this.DToolStripMenuItem_BookGroup_DeleteNoteBook.Click += new System.EventHandler(this.DToolStripMenuItem_BookGroup_DeleteNoteBook_Click);
             // 
             // 样式TToolStripMenuItem
             // 
             this.样式TToolStripMenuItem.Name = "样式TToolStripMenuItem";
-            this.样式TToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.样式TToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.样式TToolStripMenuItem.Text = "样式(T)...";
             // 
             // toolStripSeparator36
             // 
             this.toolStripSeparator36.Name = "toolStripSeparator36";
-            this.toolStripSeparator36.Size = new System.Drawing.Size(280, 6);
+            this.toolStripSeparator36.Size = new System.Drawing.Size(274, 6);
             // 
             // 保存查看设置ToolStripMenuItem
             // 
             this.保存查看设置ToolStripMenuItem.Name = "保存查看设置ToolStripMenuItem";
-            this.保存查看设置ToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.保存查看设置ToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.保存查看设置ToolStripMenuItem.Text = "保存 查看设置";
             // 
             // toolStripSeparator37
             // 
             this.toolStripSeparator37.Name = "toolStripSeparator37";
-            this.toolStripSeparator37.Size = new System.Drawing.Size(280, 6);
+            this.toolStripSeparator37.Size = new System.Drawing.Size(274, 6);
             // 
             // 移除笔记本组MToolStripMenuItem
             // 
             this.移除笔记本组MToolStripMenuItem.Name = "移除笔记本组MToolStripMenuItem";
-            this.移除笔记本组MToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.移除笔记本组MToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.移除笔记本组MToolStripMenuItem.Text = "移除笔记本组(M)";
             // 
             // toolStripSeparator38
             // 
             this.toolStripSeparator38.Name = "toolStripSeparator38";
-            this.toolStripSeparator38.Size = new System.Drawing.Size(280, 6);
+            this.toolStripSeparator38.Size = new System.Drawing.Size(274, 6);
             // 
             // 添加到快捷方式SToolStripMenuItem
             // 
             this.添加到快捷方式SToolStripMenuItem.Name = "添加到快捷方式SToolStripMenuItem";
-            this.添加到快捷方式SToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.添加到快捷方式SToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.添加到快捷方式SToolStripMenuItem.Text = "添加到快捷方式(S)";
             // 
             // toolStripSeparator39
             // 
             this.toolStripSeparator39.Name = "toolStripSeparator39";
-            this.toolStripSeparator39.Size = new System.Drawing.Size(280, 6);
+            this.toolStripSeparator39.Size = new System.Drawing.Size(274, 6);
             // 
             // 导出笔记EToolStripMenuItem
             // 
             this.导出笔记EToolStripMenuItem.Name = "导出笔记EToolStripMenuItem";
-            this.导出笔记EToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.导出笔记EToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.导出笔记EToolStripMenuItem.Text = "导出笔记(E)...";
             // 
             // 共享笔记本HToolStripMenuItem
             // 
             this.共享笔记本HToolStripMenuItem.Name = "共享笔记本HToolStripMenuItem";
-            this.共享笔记本HToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.共享笔记本HToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.共享笔记本HToolStripMenuItem.Text = "共享笔记本(H)...";
             // 
             // 共享设置OToolStripMenuItem
             // 
             this.共享设置OToolStripMenuItem.Name = "共享设置OToolStripMenuItem";
-            this.共享设置OToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.共享设置OToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.共享设置OToolStripMenuItem.Text = "共享设置(O)...";
             // 
             // toolStripSeparator40
             // 
             this.toolStripSeparator40.Name = "toolStripSeparator40";
-            this.toolStripSeparator40.Size = new System.Drawing.Size(280, 6);
+            this.toolStripSeparator40.Size = new System.Drawing.Size(274, 6);
             // 
             // 属性OToolStripMenuItem
             // 
             this.属性OToolStripMenuItem.Name = "属性OToolStripMenuItem";
-            this.属性OToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
+            this.属性OToolStripMenuItem.Size = new System.Drawing.Size(277, 24);
             this.属性OToolStripMenuItem.Text = "属性(P)";
+            // 
+            // web_content
+            // 
+            this.web_content.Location = new System.Drawing.Point(5, 122);
+            this.web_content.MinimumSize = new System.Drawing.Size(20, 20);
+            this.web_content.Name = "web_content";
+            this.web_content.Size = new System.Drawing.Size(744, 506);
+            this.web_content.TabIndex = 8;
             // 
             // Home
             // 
@@ -2116,7 +2111,6 @@
         private System.Windows.Forms.Panel panel_NoteList;
         private System.Windows.Forms.Panel panel_content;
         private System.Windows.Forms.TreeView treeView_BookGroupAndNoteBook;
-        private System.Windows.Forms.TextBox text_content;
         private System.Windows.Forms.TextBox text_title;
         private System.Windows.Forms.Panel panel_tool;
         private System.Windows.Forms.Panel panel_top;
@@ -2343,5 +2337,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator47;
         private System.Windows.Forms.ToolStripMenuItem NToolStripMenuItem_CreateGroup;
         private System.Windows.Forms.ImageList imageList_NoteBook;
+        private System.Windows.Forms.WebBrowser web_content;
     }
 }

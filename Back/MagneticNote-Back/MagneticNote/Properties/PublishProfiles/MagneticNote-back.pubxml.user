@@ -17,79 +17,79 @@
       <publishTime>10/18/2017 14:44:20</publishTime>
     </File>
     <File Include="bin/Autofac.dll">
-      <publishTime>10/11/2017 10:52:48</publishTime>
+      <publishTime>07/25/2017 05:11:08</publishTime>
     </File>
     <File Include="bin/Autofac.Integration.Mvc.dll">
-      <publishTime>10/11/2017 10:54:03</publishTime>
+      <publishTime>04/10/2017 15:40:32</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>10/11/2017 11:05:48</publishTime>
+      <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>10/11/2017 11:05:48</publishTime>
+      <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/log4net.dll">
-      <publishTime>10/11/2017 11:08:12</publishTime>
+      <publishTime>03/08/2017 19:26:22</publishTime>
     </File>
     <File Include="bin/MagneticNote.BLL.dll">
-      <publishTime>10/29/2017 15:06:58</publishTime>
+      <publishTime>12/05/2017 09:40:12</publishTime>
     </File>
     <File Include="bin/MagneticNote.BLL.pdb">
-      <publishTime>10/29/2017 15:06:58</publishTime>
+      <publishTime>12/05/2017 09:40:12</publishTime>
     </File>
     <File Include="bin/MagneticNote.Common.dll">
-      <publishTime>10/29/2017 15:06:57</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.Common.pdb">
-      <publishTime>10/29/2017 15:06:57</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.dll">
-      <publishTime>11/06/2017 15:27:16</publishTime>
+      <publishTime>12/05/2017 09:40:12</publishTime>
     </File>
     <File Include="bin/MagneticNote.EFDAL.dll">
-      <publishTime>10/29/2017 15:06:58</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.EFDAL.dll.config">
       <publishTime>10/12/2017 09:40:53</publishTime>
     </File>
     <File Include="bin/MagneticNote.EFDAL.pdb">
-      <publishTime>10/29/2017 15:06:58</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.IBLL.dll">
-      <publishTime>10/29/2017 15:06:58</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.IBLL.pdb">
-      <publishTime>10/29/2017 15:06:58</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.IDAL.dll">
-      <publishTime>10/29/2017 15:06:57</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.IDAL.pdb">
-      <publishTime>10/29/2017 15:06:57</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.Model.dll">
-      <publishTime>10/29/2017 15:06:57</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.Model.dll.config">
       <publishTime>10/11/2017 11:05:54</publishTime>
     </File>
     <File Include="bin/MagneticNote.Model.pdb">
-      <publishTime>10/29/2017 15:06:57</publishTime>
+      <publishTime>12/05/2017 09:40:11</publishTime>
     </File>
     <File Include="bin/MagneticNote.pdb">
-      <publishTime>11/06/2017 15:27:16</publishTime>
+      <publishTime>12/05/2017 09:40:12</publishTime>
     </File>
     <File Include="bin/Microsoft.QualityTools.Testing.Fakes.dll">
       <publishTime>10/05/2013 02:38:22</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>10/11/2017 10:54:03</publishTime>
+      <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>10/11/2017 14:06:25</publishTime>
+      <publishTime>06/18/2017 13:57:10</publishTime>
     </File>
     <File Include="bin/StackExchange.Redis.dll">
-      <publishTime>10/11/2017 11:29:20</publishTime>
+      <publishTime>08/01/2017 12:19:14</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 04:04:30</publishTime>
@@ -131,7 +131,7 @@
       <publishTime>10/18/2017 14:44:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/06/2017 15:27:22</publishTime>
+      <publishTime>12/05/2017 09:40:17</publishTime>
     </File>
   </ItemGroup>
 </Project>

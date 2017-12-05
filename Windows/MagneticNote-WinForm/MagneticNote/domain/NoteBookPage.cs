@@ -1,6 +1,6 @@
 ﻿using BLL;
 using Common;
-using Model.MagneticNote;
+using MagneticNote.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,17 +27,12 @@ namespace MagneticNote.domain
         private void button_Ok_Click(object sender, EventArgs e)
         {
             String name = textBox_NoteBookName.Text;
-            if (noteBookBLL.SelectObjectByName(name) == null)
-            {
-                noteBookBLL.AddObject(new NoteBook() { Name = name, BookGroupId= bookGroupId});
-                this.Dispose();
-                homePage.Enabled = true;
-                homePage.RefreshValue();
-            }
-            else
-            {
-                MessageBox.Show("已有此笔记本，请换一个名字","提示",MessageBoxButtons.OK);
-            }
+            
+            noteBookBLL.AddObject(new NoteBook() { Name = name, BookGroupId= bookGroupId});
+            this.Dispose();
+            homePage.Enabled = true;
+            homePage.RefreshValue();
+            
         }
 
         private void button_cancel_Click(object sender, EventArgs e)

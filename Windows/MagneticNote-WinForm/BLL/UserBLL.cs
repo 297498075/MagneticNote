@@ -5,42 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using System.IO;
+using Newtonsoft.Json;
+using MagneticNote.Model;
 
 namespace BLL
 {
     public class UserBLL : BaseBLL
     {
-        public bool AddObject(object obj)
-        {      
-            return userDAL.AddObject(obj);
-        }
-
-        public bool DeleteObjectById(int id)
-        {
-            return userDAL.DeleteObjectById(id);
-        }
-
-        public object SelectObjectById(int id)
-        {
-            return userDAL.SelectObjectById(id);
-        }
-
-        public bool UpdateObject(Object obj)
-        {
-            return userDAL.UpdateObject(obj);
-        }
-
         public bool Login(User user)
         {
             User value = null;
-            if (user.Name != null)
-                value = userDAL.SelectObjectByName(user.Name);
             if (user.Email != null)
-                value = userDAL.SelectObjectByEmail(user.Email);
+            {
+                value = PostValue<UserValue>("User/Get", JsonConvert.SerializeObject(new { Email = user.Email })).User;
+            }
+
             if(value != null && value.Password.Equals(user.Password))
             {
                 Info.user = value;
-                Info.defaultNoteBook = noteBookDAL.SelectObjectByGroupId(userDefaultBookGroupIdDAL.SelectObjectByUserId(value.Id).DefaultBookGroupId).First<NoteBook>();
+                Info.defaultNoteBook = PostValue<NoteBookValues>("NoteBook/Get", JsonConvert.SerializeObject(new { UserId = value.Id })).NoteBookList;
 
                 return true;
             }
@@ -50,7 +33,7 @@ namespace BLL
 
         public bool Register(User user)
         {
-            return userDAL.AddUser(user);
+            return PostResult("Home/SendRegisterEmail", JsonConvert.SerializeObject(new { Email = user.Email, Password = user.Password }));
         }
     }
 }

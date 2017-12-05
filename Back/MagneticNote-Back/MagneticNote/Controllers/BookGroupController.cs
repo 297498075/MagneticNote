@@ -17,31 +17,28 @@ namespace MagneticNote.Controllers
             this.BookGroupBLL = bookGroupBLL;
         }
 
-        public ActionResult Get()
+        public ActionResult Get(String UserId, String BookGroupId)
         {
-            String userId = Request["UserId"];
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(UserId))
             {
-                ResponseHelper.WriteList(Response,"BookGroupList",BookGroupBLL.SelectByUserId(Convert.ToInt32(userId)));
-                ;
+                ResponseHelper.WriteList(Response,"BookGroupList",BookGroupBLL.SelectByUserId(Convert.ToInt32(UserId)));
             }
 
-            String bookGroupId = Request["BookGroupId"];
-            if (!String.IsNullOrEmpty(bookGroupId))
+            if (!String.IsNullOrEmpty(BookGroupId))
             {
-                ResponseHelper.WriteObject(Response,"BookGroup",BookGroupBLL.SelectById(Convert.ToInt32(bookGroupId)));
+                ResponseHelper.WriteObject(Response,"BookGroup",BookGroupBLL.SelectById(Convert.ToInt32(BookGroupId)));
             }
             else
             {
-                ResponseHelper.WriteNull(Response);;
+                ResponseHelper.WriteNull(Response);
             }
             ;
             return null;
         }
 
-        public ActionResult Add()
+        public ActionResult Add(String BookGroup)
         {
-            BookGroup bookGroup = JsonConvert.DeserializeObject<BookGroup>(Request["BookGroup"]);
+            BookGroup bookGroup = JsonConvert.DeserializeObject<BookGroup>(BookGroup);
 
             if (bookGroup != null)
             {
@@ -56,18 +53,17 @@ namespace MagneticNote.Controllers
             }
             else
             {
-                ResponseHelper.WriteNull(Response);;
+                ResponseHelper.WriteNull(Response);
             }
             ;
             return null;
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(String Id)
         {
-            String id = Request["Id"];
-            if (!String.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(Id))
             {
-                if (BookGroupBLL.Delete(new BookGroup() { Id = Convert.ToInt32(id) }))
+                if (BookGroupBLL.Delete(new BookGroup() { Id = Convert.ToInt32(Id) }))
                 {
                     ResponseHelper.WriteTrue(Response);
                 }
@@ -84,9 +80,9 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult Update()
+        public ActionResult Update(String BookGroup)
         {
-            BookGroup bookGroup = JsonConvert.DeserializeObject<BookGroup>(Request["BookGroup"]);
+            BookGroup bookGroup = JsonConvert.DeserializeObject<BookGroup>(BookGroup);
 
             if (bookGroup != null)
             {

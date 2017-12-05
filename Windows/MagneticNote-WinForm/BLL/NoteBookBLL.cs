@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
-using Model.MagneticNote;
 using Common;
+using MagneticNote.Model;
+using Newtonsoft.Json;
 
 namespace BLL
 {
@@ -13,50 +10,45 @@ namespace BLL
     {
         public bool AddObject(NoteBook obj)
         {
-            return noteBookDAL.AddObject(obj);
+            return PostResult("NoteBook/Add", JsonConvert.SerializeObject(new { NoteBook = obj }));
         }
 
         public bool DeleteObjectById(int id)
         {
-            List<Note> list = noteDAL.SelectObjectByNoteBookId(id);
+            IList<Note> list = PostValues<NoteValues>("Note/Get", JsonConvert.SerializeObject(new { NoteBookId = id })).NoteList;
 
-            foreach(Note note in list)
+            foreach (Note note in list)
             {
-                note.NoteBookId = Info.defaultNoteBook.Id;
-                noteDAL.UpdateObject(note);
+                note.NoteBookId = Info.defaultNoteBook[0].Id;
+                PostResult("Note/Update", JsonConvert.SerializeObject(new { Note = note }));
             }
 
-            return noteBookDAL.DeleteObjectById(id);
+            return PostResult("NoteBook/Delete", JsonConvert.SerializeObject(new { Id = id }));
         }
 
-        public object SelectObjectById(int id)
+        public NoteBook SelectObjectById(int id)
         {
-            return noteBookDAL.SelectObjectById(id);
+            return PostValue<NoteBookValue>("NoteBook/Get", JsonConvert.SerializeObject(new { Id = id })).NoteBook;
         }
 
         public bool UpdateObject(NoteBook obj)
         {
-            return noteBookDAL.UpdateObject(obj);
+            return PostResult("NoteBook/Update", JsonConvert.SerializeObject(new { NoteBook = obj }));
         }
 
-        public NoteBook SelectObjectByName(string v)
+        public IList<NoteBook> SelectObjectByGroupId(int id)
         {
-            return noteBookDAL.SelectObjectByName(v);
+            return PostValues<NoteBookValues>("NoteBook/Get", JsonConvert.SerializeObject(new { BookGroupId = id })).NoteBookList;
         }
 
-        public IEnumerable<NoteBook> SelectObjectByGroupId(int id)
+        public IList<NoteBook> SelectAllObject()
         {
-            return noteBookDAL.SelectObjectByGroupId(id);
-        }
-
-        public List<NoteBook> SelectAllObject()
-        {
-            return noteBookDAL.SelectAllObject();
+            return PostValues<NoteBookValues>("Home/GetAllNoteBook", JsonConvert.SerializeObject(new { UserId = Common.Info.user.Id })).NoteBookList;
         }
 
         public int SelectCountById(int id)
         {
-            return noteBookDAL.SelectCountById(id);
+            return PostValues<NoteValues>("Note/Get", JsonConvert.SerializeObject(new { NoteBookId = id })).NoteList.Count;
         }
     }
 }

@@ -42,3 +42,14 @@ C:\Users\匀强的磁场\Desktop\MagneticNote-WinForm\src\Common\bin\Debug\zh-Ha
 C:\Users\匀强的磁场\Desktop\MagneticNote-WinForm\src\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Users\匀强的磁场\Desktop\MagneticNote-WinForm\src\Common\obj\Debug\Common.dll
 C:\Users\匀强的磁场\Desktop\MagneticNote-WinForm\src\Common\obj\Debug\Common.pdb
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\bin\Debug\Common.dll
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\bin\Debug\Common.pdb
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\bin\Debug\Model.dll
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\bin\Debug\Model.pdb
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\bin\Debug\Model.dll.config
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\bin\Debug\Newtonsoft.Json.xml
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\obj\Debug\Common.dll
+C:\Users\29749\Desktop\MagneticNote\Windows\MagneticNote-WinForm\Common\obj\Debug\Common.pdb

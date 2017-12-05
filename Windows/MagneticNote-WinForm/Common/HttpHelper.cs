@@ -48,15 +48,20 @@ namespace Common
             var request = (HttpWebRequest)WebRequest.Create(URL);
 
             request.Method = WebRequestMethods.Http.Post;
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.GetRequestStream().Write(requestData, 0, requestData.Length);
+            request.ContentType = request.Accept = "application/json, text/plain, */*";
 
-            var response = (HttpWebResponse)request.GetResponse();
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(requestData, 0, requestData.Length);
+            }
+            
+            using (var response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader sr = new StreamReader(stream);
 
-            Stream stream = response.GetResponseStream();
-            StreamReader sr = new StreamReader(stream);
-
-            return sr.ReadToEnd();
+                return sr.ReadToEnd();
+            }
         }
     }
 }

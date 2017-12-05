@@ -17,24 +17,21 @@ namespace MagneticNote.Controllers
             this.NoteBookBLL = NoteBookBLL;
         }
 
-        public ActionResult Get()
+        public ActionResult Get(String UserId, String BookGroupId, String Id)
         {
-            String userId = Request["UserId"];
-            if(!String.IsNullOrEmpty(userId))
+            if(!String.IsNullOrEmpty(UserId))
             {
-                ResponseHelper.WriteList(Response,"NoteBookList",NoteBookBLL.SelectByUserId(Convert.ToInt32(userId)));
+                ResponseHelper.WriteList(Response,"NoteBookList",NoteBookBLL.SelectByUserId(Convert.ToInt32(UserId)));
             }
 
-            String bookGroupId = Request["BookGroupId"];
-            if(!String.IsNullOrEmpty(bookGroupId))
+            if(!String.IsNullOrEmpty(BookGroupId))
             {
-                ResponseHelper.WriteList(Response,"NoteBookList",NoteBookBLL.SelectByBookGroupId(Convert.ToInt32(bookGroupId)));
+                ResponseHelper.WriteList(Response,"NoteBookList",NoteBookBLL.SelectByBookGroupId(Convert.ToInt32(BookGroupId)));
             }
 
-            String id = Request["Id"];
-            if (!String.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(Id))
             {
-                ResponseHelper.WriteObject(Response,"NoteBook",NoteBookBLL.SelectById(Convert.ToInt32(id)));
+                ResponseHelper.WriteObject(Response,"NoteBook",NoteBookBLL.SelectById(Convert.ToInt32(Id)));
             }
             else
             {
@@ -44,9 +41,9 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult Add()
+        public ActionResult Add(String NoteBook)
         {
-            NoteBook noteBook = JsonConvert.DeserializeObject<NoteBook>(Request["NoteBook"]);
+            NoteBook noteBook = JsonConvert.DeserializeObject<NoteBook>(NoteBook);
 
             if (noteBook != null)
             {
@@ -67,12 +64,11 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(String Id)
         {
-            String id = Request["Id"];
-            if (!String.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(Id))
             {
-                if (NoteBookBLL.Delete(new NoteBook() { Id = Convert.ToInt32(id) }))
+                if (NoteBookBLL.Delete(new NoteBook() { Id = Convert.ToInt32(Id) }))
                 {
                     ResponseHelper.WriteTrue(Response);
                 }
@@ -89,9 +85,9 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult Update()
+        public ActionResult Update(String NoteBook)
         {
-            NoteBook noteBook = JsonConvert.DeserializeObject<NoteBook>(Request["NoteBook"]);
+            NoteBook noteBook = JsonConvert.DeserializeObject<NoteBook>(NoteBook);
 
             if (noteBook != null && noteBook.Id != 0)
             {

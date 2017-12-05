@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
-using Model.MagneticNote;
 using Common;
+using MagneticNote.Model;
+using Newtonsoft.Json;
 
 namespace BLL
 {
@@ -13,7 +13,7 @@ namespace BLL
     {
         public bool AddObject(object obj)
         {
-            if (bookGroupDAL.AddObject(obj))
+            if (this.PostResult("BookGroup/Add", JsonConvert.SerializeObject(new { BookGroup = obj})))
                 return true;
             else
                 return false;
@@ -21,36 +21,36 @@ namespace BLL
 
         public bool DeleteObjectById(int id)
         {
-            List<NoteBook> list = noteBookDAL.SelectObjectByGroupId(id);
+            IList<NoteBook> list = PostValues<NoteBookValues>("NoteBook/Get", JsonConvert.SerializeObject(new { BookGroupId = id })).NoteBookList;
 
             if (list.Count > 0)
             { 
                 foreach (NoteBook noteBook in list)
                 {
-                    noteBook.BookGroupId = Info.defaultNoteBook.BookGroupId;
-                    noteBookDAL.UpdateObject(noteBook);
+                    noteBook.BookGroupId = Info.defaultNoteBook[0].BookGroupId;
+                    PostResult("NoteBook/Update", JsonConvert.SerializeObject(new { NoteBook = noteBook}));
                 }
             }
 
-            if (bookGroupDAL.DeleteObjectById(id))
+            if (PostResult("BookGroup/Delete", JsonConvert.SerializeObject(new { Id = id })))
                 return true;
             else
                 return false;
         }
 
-        public List<BookGroup> SelectObjectsByUserId(int id)
+        public IList<BookGroup> SelectObjectsByUserId(int id)
         {
-            return bookGroupDAL.SelectObjectsByUserId(id);
+            return PostValues<BookGroupValues>("BookGroup/Get", JsonConvert.SerializeObject(new { UserId = id })).BookGroupList;
         }
 
-        public object SelectObjectById(int id)
+        public BookGroup SelectObjectById(int id)
         {
-            return bookGroupDAL.SelectObjectById(id);
+            return PostValue<BookGroupValue>("BookGroup/Get", JsonConvert.SerializeObject(new { Id = id })).BookGroup;
         }
 
         public bool UpdateObject(Object obj)
         {
-            return bookGroupDAL.UpdateObject(obj);
+            return PostResult("BookGroup/Update", JsonConvert.SerializeObject(new { BookGroup = obj }));
         }
     }
 }

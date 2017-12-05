@@ -10,7 +10,7 @@ using Model;
 
 namespace BLL
 {
-    public abstract class BaseBLL<T> where T : class
+    public abstract class BaseBLL
     {
         private HttpHelper HttpHelper { get; set; }
         private String HttpKey { get; set; }
@@ -21,13 +21,13 @@ namespace BLL
             HttpKey = ConfigurationManager.AppSettings["HttpKey"];
         }
 
-        public IList<T> Get(String url, IEnumerable<KeyValuePair<String, String>> requestData = null)
+        public T GetValues<T>(String url, IEnumerable<KeyValuePair<String, String>> requestData = null)
         {
             HttpHelper.URL = ConfigurationManager.AppSettings["ServerAddress"] + url + "?RequestKey=" + HttpKey;
-            return JsonConvert.DeserializeObject<IList<T>>(HttpHelper.GetString(requestData));
+            return JsonConvert.DeserializeObject<T>(HttpHelper.GetString(requestData));
         }
 
-        public IList<T> Post(String url, String requestData = null)
+        public T PostValues<T>(String url, String requestData = null)
         {
             HttpHelper.URL = ConfigurationManager.AppSettings["ServerAddress"] + url + "?RequestKey=" + HttpKey;
 
@@ -37,8 +37,28 @@ namespace BLL
             {
                 data = Encoding.UTF8.GetBytes(requestData);
             }
+            var str = HttpHelper.PostString(data);
+            return JsonConvert.DeserializeObject<T>(str);
+        }
 
-            return JsonConvert.DeserializeObject<IList<T>>(HttpHelper.PostString(data));
+        public T GetValue<T>(String url, IEnumerable<KeyValuePair<String, String>> requestData = null)
+        {
+            HttpHelper.URL = ConfigurationManager.AppSettings["ServerAddress"] + url + "?RequestKey=" + HttpKey;
+            return JsonConvert.DeserializeObject<T>(HttpHelper.GetString(requestData));
+        }
+
+        public T PostValue<T>(String url, String requestData = null)
+        {
+            HttpHelper.URL = ConfigurationManager.AppSettings["ServerAddress"] + url + "?RequestKey=" + HttpKey;
+
+            byte[] data = null;
+
+            if (requestData != null)
+            {
+                data = Encoding.UTF8.GetBytes(requestData);
+            }
+            var str = HttpHelper.PostString(data);
+            return JsonConvert.DeserializeObject<T>(str);
         }
 
         public bool GetResult(String url, IEnumerable<KeyValuePair<String, String>> requestData = null)

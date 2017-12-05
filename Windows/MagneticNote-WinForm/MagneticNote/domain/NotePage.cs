@@ -1,6 +1,6 @@
 ﻿using BLL;
 using Common;
-using Model.MagneticNote;
+using MagneticNote.Model;
 using System;
 using System.Data;
 using System.Linq;
@@ -23,17 +23,23 @@ namespace MagneticNote.domain
             {
                 RefreshValue(noteId);
             }
-            else
-            {       
-                note = noteBLL.CreateNote(Info.defaultNoteBook.Id);
-                
+            else if(note != null)
+            {
                 RefreshValue(note.Id);
+            }
+            else
+            {
+                note = new Note();
+                RefreshValue();
             }
         }
 
-        private void RefreshValue(int noteId)
+        private void RefreshValue(int noteId = 0)
         {
-            note = noteBLL.SelectObjectById(noteId) as Model.MagneticNote.Note;
+            if(noteId == 0)
+            {
+                ToolStripMenuItem_CreateDate.Text = DateTime.Now.ToLongDateString();
+            }
 
             if (note != null)
             {
@@ -41,12 +47,11 @@ namespace MagneticNote.domain
                 text_content.Text = note.Content;
             }
 
-            ToolStripMenuItem_CreateDate.Text = note.CreateDate.ToShortDateString();
+            ToolStripMenuItem_CreateDate.Text = note.CreateDate;
             
             var list = from value in noteBookBLL.SelectAllObject()
                        select value.Name;
             ToolStripMenuItem_NoteBook.Items.AddRange(list.ToArray());
-            ToolStripMenuItem_NoteBook.SelectedText = Info.defaultNoteBook.Name;
         }
 
         private void NotePage_FormClosing(object sender, FormClosingEventArgs e)

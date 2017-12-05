@@ -15,4 +15,14 @@ namespace MagneticNote.Model
         public string UpdateDate { get; set; }
         public int NoteBookId { get; set; }
     }
+
+    public class NoteValue
+    {
+        public Note Note { get; set; }
+    }
+
+    public class NoteValues
+    {
+        public IList<Note> NoteList { get; set; }
+    }
 }

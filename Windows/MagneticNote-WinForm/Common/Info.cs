@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.MagneticNote;
 using System.Drawing;
+using MagneticNote.Model;
 
 namespace Common
 {
@@ -12,7 +12,7 @@ namespace Common
     {
         public static User user { get; set; }
 
-        public static NoteBook defaultNoteBook { get; set; }
+        public static IList<NoteBook> defaultNoteBook { get; set; }
 
         public static Dictionary<String,Image> Image { get; set; }
 

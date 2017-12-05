@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Model.MagneticNote;
 using BLL;
 using Common;
 using System.Threading;
+using MagneticNote.Model;
 
 namespace MagneticNote.domain
 {
@@ -36,7 +36,7 @@ namespace MagneticNote.domain
                        select value.Name;
             List<String> items = list.ToList<String>();
             ToolStripMenuItem_NoteBook.Items.AddRange(items.ToArray());
-            ToolStripMenuItem_NoteBook.SelectedIndex = items.IndexOf(Info.defaultNoteBook.Name);
+            ToolStripMenuItem_NoteBook.SelectedIndex = items.IndexOf(Info.defaultNoteBook[0].Name);
             Dictionary<String, Image> dictionary = new Dictionary<string, Image>();
             dictionary.Add("options_saving", Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "image\\options_saving.gif"));
             dictionary.Add("options_save", Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "image\\options_save.png"));
@@ -48,9 +48,9 @@ namespace MagneticNote.domain
         private void TryRefreshBookGroup()
         {
             treeView_BookGroupAndNoteBook.Nodes.Clear();
-            List<BookGroup> bookGroupList = bookGroupBLL.SelectObjectsByUserId(Info.user.Id);
+            IList<BookGroup> bookGroupList = bookGroupBLL.SelectObjectsByUserId(Info.user.Id);
             treeView_BookGroupAndNoteBook.ImageList = imageList_Group;
-            this.Text += Info.user.Name;
+            this.Text += Info.user.Email;
 
             TreeNode rootNode = new TreeNode();
             rootNode.Text = "笔记本";
@@ -80,7 +80,7 @@ namespace MagneticNote.domain
                         cnode.NodeFont = new Font("宋体", 9);
                         rootNode.Nodes.Add(cnode);
                     }
-                    TryRefreshNoteBook(value.NoteBook.First<NoteBook>());
+                    TryRefreshNoteBook(noteBookBLL.SelectObjectByGroupId(value.Id).First<NoteBook>());
                     continue;
                 }
                 else
@@ -103,7 +103,7 @@ namespace MagneticNote.domain
         }
         private void TryRefreshNoteBook()
         {
-            List<Note> noteList = noteBLL.SelectAllObject();
+            IList<Note> noteList = noteBLL.SelectAllObject();
 
             if (noteList != null && noteList.Count != 0)
             {
@@ -124,7 +124,7 @@ namespace MagneticNote.domain
         private void TryRefreshNoteBook(NoteBook noteBook)
         {
             if (noteBook == null) return;
-            List<Note> noteList = noteBLL.SelectObjectByNoteBookId(noteBook.Id);
+            IList<Note> noteList = noteBLL.SelectObjectByNoteBookId(noteBook.Id);
 
             if (noteList != null && noteList.Count != 0)
             {
@@ -145,7 +145,7 @@ namespace MagneticNote.domain
         private void TryRefreshNoteBook(BookGroup bookGroup)
         {
             if (bookGroup == null) return;
-            List<Note> noteList = noteBLL.SelectObjectByBookGroupId(bookGroup.Id);
+            IList<Note> noteList = noteBLL.SelectObjectByBookGroupId(bookGroup.Id);
 
             if (noteList != null && noteList.Count != 0)
             {
@@ -170,18 +170,18 @@ namespace MagneticNote.domain
             if (note != null)
             {
                 text_title.Text = note.Title;
-                text_content.Text = note.Content;
-                ToolStripMenuItem_CreateDate.Text = note.CreateDate.ToShortDateString();
+                web_content.DocumentText = note.Content;
+                ToolStripMenuItem_CreateDate.Text = note.CreateDate;
 
                 ToolStripMenuItem_NoteBook.Text = String.Empty;
-                ToolStripMenuItem_NoteBook.SelectedText = note.NoteBook.Name;
+                ToolStripMenuItem_NoteBook.SelectedText = (noteBookBLL.SelectObjectById(note.NoteBookId) as NoteBook).Name;
             }
             else
             {
                 text_title.Text = String.Empty;
-                text_content.Text = String.Empty;
+                web_content.DocumentText = String.Empty;
                 ToolStripMenuItem_NoteBook.Text = String.Empty;
-                ToolStripMenuItem_NoteBook.SelectedText = Info.defaultNoteBook.Name;
+                ToolStripMenuItem_NoteBook.SelectedText = Info.defaultNoteBook[0].Name;
             }
         }
 
@@ -230,7 +230,7 @@ namespace MagneticNote.domain
                     NoteBook noteBook = CurrentNode.Tag as NoteBook;
                     if (noteBook != null)
                     {
-                        if (noteBook.BookGroupId == Info.defaultNoteBook.BookGroupId)
+                        if (noteBook.BookGroupId == Info.defaultNoteBook[0].BookGroupId)
                             CurrentNode.ContextMenuStrip = contextMenuStrip_GroupNoteBook;
                         else
                             CurrentNode.ContextMenuStrip = contextMenuStrip_Group_NoteBook;
@@ -303,7 +303,7 @@ namespace MagneticNote.domain
             BookGroup bookGroup = treeView_BookGroupAndNoteBook.SelectedNode.Tag as BookGroup;
             if (noteBook != null) noteBookPage.bookGroupId = noteBook.BookGroupId;
             if (bookGroup != null) noteBookPage.bookGroupId = bookGroup.Id;
-            if (noteBookPage.bookGroupId == 0) noteBookPage.bookGroupId = Info.defaultNoteBook.BookGroupId;
+            if (noteBookPage.bookGroupId == 0) noteBookPage.bookGroupId = Info.defaultNoteBook[0].BookGroupId;
             this.Enabled = false;
             noteBookPage.Show();
         }

@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="MagneticNote.exe.manifest" size="15984">
+    <dependentAssembly dependencyType="install" codebase="MagneticNote.exe.manifest" size="17441">
       <assemblyIdentity name="MagneticNote.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>v0VRywcJAn5xQdZNbEfKuDcfK9hWlGlTsmbUbw4XP/8=</dsig:DigestValue>
+        <dsig:DigestValue>j7tdccXhCIessrpMK3jH7oAnOq9i6tG1tB2EO6JRudQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

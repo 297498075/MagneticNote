@@ -11,7 +11,7 @@ using BLL;
 using Common;
 using System.Net.Mail;
 using System.Net;
-using Model.Entity;
+using MagneticNote.Model;
 
 namespace MagneticNote
 {
@@ -101,7 +101,7 @@ namespace MagneticNote
             }
             else
             {
-                bo = userBLL.Login(new User() { Name = userNameOrEmail, Password = password });
+                bo = userBLL.Login(new User() { Email = userNameOrEmail, Password = password });
             }
 
             if (bo == true)

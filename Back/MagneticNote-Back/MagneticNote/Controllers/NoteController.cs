@@ -16,48 +16,42 @@ namespace MagneticNote.Controllers
             this.NoteBLL = NoteBLL;
         }
 
-        public ActionResult Get()
+        public ActionResult Get(String UserId, String Id, String Condition, String NoteBookId)
         {
-            String userId = Request["UserId"];
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(UserId))
             {
-                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(userId)));
-                ;
+                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(UserId)));
             }
 
-            String noteId = Request["Id"];
-            if (!String.IsNullOrEmpty(noteId))
+            if (!String.IsNullOrEmpty(Id))
             {
-                ResponseHelper.WriteObject(Response, "Note", NoteBLL.SelectById(Convert.ToInt32(noteId)));
-                ;
+                ResponseHelper.WriteObject(Response, "Note", NoteBLL.SelectById(Convert.ToInt32(Id)));
             }
 
-            String condition = Request["Condition"];
-            String noteBookId = Request["NoteBookId"];
-            if (!String.IsNullOrEmpty(condition))
+            if (!String.IsNullOrEmpty(Condition))
             {
-                if (!String.IsNullOrEmpty(noteBookId))
+                if (!String.IsNullOrEmpty(NoteBookId))
                 {
-                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(condition, Convert.ToInt32(noteBookId)));
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(Condition, Convert.ToInt32(NoteBookId)));
                 }
-                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(condition));
+                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(Condition));
             }
-            else if (!String.IsNullOrEmpty(noteBookId))
+            else if (!String.IsNullOrEmpty(NoteBookId))
             {
-                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByNoteBookId(Convert.ToInt32(noteBookId)));
+                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByNoteBookId(Convert.ToInt32(NoteBookId)));
             }
             else
             {
 
-                ResponseHelper.WriteNull(Response);;
+                ResponseHelper.WriteNull(Response);
             }
-            ;
+            
             return null;
         }
 
-        public ActionResult Add()
+        public ActionResult Add(String Note)
         {
-            Note note = JsonConvert.DeserializeObject<Note>(Request.Unvalidated["Note"]);
+            Note note = JsonConvert.DeserializeObject<Note>(Note);
             note.CreateDate = DateTime.Now.GetDateTimeFormats()[2];
             note.UpdateDate = DateTime.Now.GetDateTimeFormats()[2];
             if (note != null)
@@ -80,12 +74,11 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(String Id)
         {
-            String id = Request["Id"];
-            if (!String.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(Id))
             {
-                if (NoteBLL.Delete(new Note() { Id = Convert.ToInt32(id) }))
+                if (NoteBLL.Delete(new Note() { Id = Convert.ToInt32(Id) }))
                 {
                     ResponseHelper.WriteTrue(Response);
                 }
@@ -103,10 +96,10 @@ namespace MagneticNote.Controllers
             return null;
         }
 
-        public ActionResult Update()
+        public ActionResult Update(String Note)
         {
             Request.ValidateInput();
-            Note note = JsonConvert.DeserializeObject<Note>(Request.Unvalidated["Note"]);
+            Note note = JsonConvert.DeserializeObject<Note>(Note);
             note.UpdateDate = DateTime.Now.GetDateTimeFormats()[2];
             if (note != null && note.Id != 0)
             {

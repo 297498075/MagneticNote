@@ -12,4 +12,14 @@ namespace MagneticNote.Model
         public string Name { get; set; }
         public int UserId { get; set; }
     }
+
+    public class BookGroupValue
+    {
+        public BookGroup BookGroup { get; set; }
+    }
+
+    public class BookGroupValues
+    {
+        public IList<BookGroup> BookGroupList { get; set; }
+    }
 }
