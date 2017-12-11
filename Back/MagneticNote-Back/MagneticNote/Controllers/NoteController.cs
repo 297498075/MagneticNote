@@ -1,4 +1,5 @@
-﻿using MagneticNote.Common;
+﻿using Common;
+using MagneticNote.Common;
 using MagneticNote.IBLL;
 using MagneticNote.Model.Data;
 using Newtonsoft.Json;
@@ -16,36 +17,69 @@ namespace MagneticNote.Controllers
             this.NoteBLL = NoteBLL;
         }
 
-        public ActionResult Get(String UserId, String Id, String Condition, String NoteBookId)
+        public ActionResult Get(String UserId, String Id, String Condition, String NoteBookId, String column = "0")
         {
-            if (!String.IsNullOrEmpty(UserId))
+            if (column.Equals("0"))
             {
-                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(UserId)));
-            }
-
-            if (!String.IsNullOrEmpty(Id))
-            {
-                ResponseHelper.WriteObject(Response, "Note", NoteBLL.SelectById(Convert.ToInt32(Id)));
-            }
-
-            if (!String.IsNullOrEmpty(Condition))
-            {
-                if (!String.IsNullOrEmpty(NoteBookId))
+                if (!String.IsNullOrEmpty(UserId))
                 {
-                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(Condition, Convert.ToInt32(NoteBookId)));
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(UserId)));
                 }
-                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(Condition));
-            }
-            else if (!String.IsNullOrEmpty(NoteBookId))
-            {
-                ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByNoteBookId(Convert.ToInt32(NoteBookId)));
+
+                if (!String.IsNullOrEmpty(Id))
+                {
+                    ResponseHelper.WriteObject(Response, "Note", NoteBLL.SelectById(Convert.ToInt32(Id)));
+                }
+
+                if (!String.IsNullOrEmpty(Condition))
+                {
+                    if (!String.IsNullOrEmpty(NoteBookId))
+                    {
+                        ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(Condition, Convert.ToInt32(NoteBookId)));
+                    }
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByCondition(Condition));
+                }
+                else if (!String.IsNullOrEmpty(NoteBookId))
+                {
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByNoteBookId(Convert.ToInt32(NoteBookId)));
+                }
+                else
+                {
+
+                    ResponseHelper.WriteNull(Response);
+                }
             }
             else
             {
+                if (!String.IsNullOrEmpty(UserId))
+                {
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserIdAndColumn(Convert.ToInt32(UserId), Info.PageSize * Convert.ToInt32(column), Info.PageSize));
+                }
 
-                ResponseHelper.WriteNull(Response);
+                if (!String.IsNullOrEmpty(Id))
+                {
+                    ResponseHelper.WriteObject(Response, "Note", NoteBLL.SelectById(Convert.ToInt32(Id)));
+                }
+
+                if (!String.IsNullOrEmpty(Condition))
+                {
+                    if (!String.IsNullOrEmpty(NoteBookId))
+                    {
+                        ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByConditionAndColumn(Condition, Convert.ToInt32(NoteBookId), Convert.ToInt32(column)));
+                    }
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByConditionAndColumn(Condition, Info.PageSize * Convert.ToInt32(column), Info.PageSize));
+                }
+                else if (!String.IsNullOrEmpty(NoteBookId))
+                {
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByNoteBookIdAndColumn(Convert.ToInt32(NoteBookId), Info.PageSize * Convert.ToInt32(column), Info.PageSize));
+                }
+                else
+                {
+
+                    ResponseHelper.WriteNull(Response);
+                }
             }
-            
+
             return null;
         }
 

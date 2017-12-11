@@ -19,6 +19,7 @@ namespace MagneticNote.Controllers
         public INoteBookBLL NoteBookBLL { get; set; }
         public IBookGroupBLL BookGroupBLL { get; set; }
         public IUserBLL UserBLL { get; set; }
+
         public HomeController(INoteBLL noteBLL, INoteBookBLL noteBookBLL,IBookGroupBLL bookGroupBLL,IUserBLL userBLL)
         {
             this.UserBLL = userBLL;
@@ -39,7 +40,7 @@ namespace MagneticNote.Controllers
             {
                 if (!String.IsNullOrEmpty(Column))
                 {
-                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(UserId), Convert.ToInt32(Column)));
+                    ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserIdAndColumn(Convert.ToInt32(UserId), Info.PageSize * Convert.ToInt32(Column), Info.PageSize));
                 }
 
                 ResponseHelper.WriteList(Response, "NoteList", NoteBLL.SelectByUserId(Convert.ToInt32(UserId)));

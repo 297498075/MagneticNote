@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MagneticNote" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="MagneticNoteContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="User" EntityType="MagneticNote.User" />
+    <EntitySet Name="BookGroup" EntityType="MagneticNote.BookGroup" />
+    <EntitySet Name="NoteBook" EntityType="MagneticNote.NoteBook" />
+    <EntitySet Name="Note" EntityType="MagneticNote.Note" />
+    <AssociationSet Name="UserBookGroup" Association="MagneticNote.UserBookGroup">
+      <End Role="User" EntitySet="User" />
+      <End Role="BookGroup" EntitySet="BookGroup" />
+    </AssociationSet>
+    <AssociationSet Name="NoteBookNote" Association="MagneticNote.NoteBookNote">
+      <End Role="NoteBook" EntitySet="NoteBook" />
+      <End Role="Note" EntitySet="Note" />
+    </AssociationSet>
+    <AssociationSet Name="UserNoteBook" Association="MagneticNote.UserNoteBook">
+      <End Role="User" EntitySet="User" />
+      <End Role="NoteBook" EntitySet="NoteBook" />
+    </AssociationSet>
+    <AssociationSet Name="BookGroupNoteBook" Association="MagneticNote.BookGroupNoteBook">
+      <End Role="BookGroup" EntitySet="BookGroup" />
+      <End Role="NoteBook" EntitySet="NoteBook" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="48" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="BookGroup" Relationship="MagneticNote.UserBookGroup" FromRole="User" ToRole="BookGroup" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="48" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NoteBook" Relationship="MagneticNote.UserNoteBook" FromRole="User" ToRole="NoteBook" />
+  </EntityType>
+  <EntityType Name="BookGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="MagneticNote.UserBookGroup" FromRole="BookGroup" ToRole="User" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NoteBook" Relationship="MagneticNote.BookGroupNoteBook" FromRole="BookGroup" ToRole="NoteBook" />
+  </EntityType>
+  <EntityType Name="NoteBook">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Note" Relationship="MagneticNote.NoteBookNote" FromRole="NoteBook" ToRole="Note" />
+    <NavigationProperty Name="User" Relationship="MagneticNote.UserNoteBook" FromRole="NoteBook" ToRole="User" />
+    <Property Name="UserId" Type="Int32" Nullable="false" DefaultValue="0" />
+    <NavigationProperty Name="BookGroup" Relationship="MagneticNote.BookGroupNoteBook" FromRole="NoteBook" ToRole="BookGroup" />
+    <Property Name="BookGroupId" Type="Int32" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="UpdateDate" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="NoteBook" Relationship="MagneticNote.NoteBookNote" FromRole="Note" ToRole="NoteBook" />
+    <Property Name="NoteBookId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="UserBookGroup">
+    <End Type="MagneticNote.User" Role="User" Multiplicity="1" />
+    <End Type="MagneticNote.BookGroup" Role="BookGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookGroup">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NoteBookNote">
+    <End Type="MagneticNote.NoteBook" Role="NoteBook" Multiplicity="1" />
+    <End Type="MagneticNote.Note" Role="Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NoteBook">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="NoteBookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserNoteBook">
+    <End Type="MagneticNote.User" Role="User" Multiplicity="1" />
+    <End Type="MagneticNote.NoteBook" Role="NoteBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteBook">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookGroupNoteBook">
+    <End Type="MagneticNote.BookGroup" Role="BookGroup" Multiplicity="1" />
+    <End Type="MagneticNote.NoteBook" Role="NoteBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteBook">
+        <PropertyRef Name="BookGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

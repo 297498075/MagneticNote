@@ -11,10 +11,9 @@ namespace Common
     {
         public static String Address = ConfigurationManager.AppSettings["Address"];
         public static String ResourceAddress = ConfigurationManager.AppSettings["ResourceAddress"];
-        public static String EmailAddress = ConfigurationManager.AppSettings["EmailAddress"];
         public static String Host = ConfigurationManager.AppSettings["EmailHost"];
         public static String EmailUserName = ConfigurationManager.AppSettings["EmailAccount"];
         public static String EmailPassword = ConfigurationManager.AppSettings["EmailPassword"];
-
+        public static int PageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
     }
 }

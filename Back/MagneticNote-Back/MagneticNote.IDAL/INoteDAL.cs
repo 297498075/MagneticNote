@@ -9,8 +9,14 @@ namespace MagneticNote.IDAL
     {
         IQueryable<Note> SelectByBookGroupId(int bookGroupId);
         IQueryable<Note> SelectByUserId(int userId);
+        IQueryable<Note> SelectByNoteBookId(int notebookId);
         IQueryable<Note> SelectByCondition(String condition);
         IQueryable<Note> SelectByCondition(String condition, int noteBookId);
-        IQueryable<Note> SelectByUserId(int userId, int column);
+
+        IQueryable<Note> SelectByBookGroupIdAndColumn(int bookGroupId, int start, int end);
+        IQueryable<Note> SelectByNoteBookIdAndColumn(int notebookId, int start, int end);
+        IQueryable<Note> SelectByConditionAndColumn(String condition, int start, int end);
+        IQueryable<Note> SelectByConditionAndColumn(String condition, int noteBookId, int start, int end);
+        IQueryable<Note> SelectByUserIdAndColumn(int userId, int start, int end);
     }
 }

@@ -54,17 +54,6 @@ namespace MagneticNote.BLL
             return null;
         }
 
-        public List<Note> SelectByUserId(int userId, int column)
-        {
-            List<Model.Entity.Note> list = NoteDAL.SelectByUserId(userId, column).ToList();
-            if (list != null)
-            {
-                return EntityToData(list);
-            }
-
-            return null;
-        }
-
         public List<Note> SelectByCondition(string Condition)
         {
             List<Model.Entity.Note> list = NoteDAL.SelectByCondition(Condition).ToList();
@@ -79,7 +68,7 @@ namespace MagneticNote.BLL
         public List<Note> SelectByCondition(string Condition, int noteBookId)
         {
             List<Model.Entity.Note> list = NoteDAL.SelectByCondition(Condition, noteBookId).ToList();
-            if(list != null)
+            if (list != null)
             {
                 return EntityToData(list);
             }
@@ -87,10 +76,66 @@ namespace MagneticNote.BLL
             return null;
         }
 
+        public List<Note> SelectByUserIdAndColumn(int userId, int start, int end)
+        {
+            List<Model.Entity.Note> list = NoteDAL.SelectByUserIdAndColumn(userId, start, end).ToList();
+            if (list != null)
+            {
+                return EntityToData(list);
+            }
+
+            return null;
+        }
+
+        public List<Note> SelectByConditionAndColumn(string Condition, int start, int end)
+        {
+            List<Model.Entity.Note> list = NoteDAL.SelectByConditionAndColumn(Condition, start, end).ToList();
+            if (list != null)
+            {
+                return EntityToData(list);
+            }
+
+            return null;
+        }
+
+        public List<Note> SelectByConditionAndColumn(string Condition, int noteBookId, int start, int end)
+        {
+            List<Model.Entity.Note> list = NoteDAL.SelectByConditionAndColumn(Condition, noteBookId, start, end).ToList();
+            if (list != null)
+            {
+                return EntityToData(list);
+            }
+
+            return null;
+        }
+
+        public List<Note> SelectByNoteBookIdAndColumn(int noteBookId, int start, int end)
+        {
+            List<Model.Entity.Note> list = NoteDAL.SelectByNoteBookIdAndColumn(noteBookId, start, end).ToList();
+            if (list != null)
+            {
+                return EntityToData(list);
+            }
+
+            return null;
+        }
+
+        public List<Note> SelectByBookGroupIdAndColumn(int bookGroupId, int start, int end)
+        {
+            List<Model.Entity.Note> list = NoteDAL.SelectByBookGroupIdAndColumn(bookGroupId, start, end).ToList();
+            if (list != null)
+            {
+                return EntityToData(list);
+            }
+
+            return null;
+        }
+
+
         protected override Note EntityToData(Model.Entity.Note note)
         {
             Note value = new Note();
-            if(note == null)
+            if (note == null)
             {
                 return value;
             }
