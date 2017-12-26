@@ -36,6 +36,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Add(String BookGroup)
         {
             BookGroup bookGroup = JsonConvert.DeserializeObject<BookGroup>(BookGroup);
@@ -80,6 +81,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Update(String BookGroup)
         {
             BookGroup bookGroup = JsonConvert.DeserializeObject<BookGroup>(BookGroup);

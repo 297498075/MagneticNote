@@ -83,6 +83,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Add(String Note)
         {
             Note note = JsonConvert.DeserializeObject<Note>(Note);
@@ -130,6 +131,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Update(String Note)
         {
             Request.ValidateInput();

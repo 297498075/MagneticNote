@@ -99,3 +99,15 @@ C:\Users\29749\Downloads\MagneticNote-master\Back\MagneticNote-Back\MagneticNote
 C:\Users\29749\Downloads\MagneticNote-master\Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.csproj.CoreCompileInputs.cache
 C:\Users\29749\Downloads\MagneticNote-master\Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.dll
 C:\Users\29749\Downloads\MagneticNote-master\Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.pdb
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\MagneticNote.Common.dll
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\MagneticNote.Common.pdb
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Autofac.dll
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Newtonsoft.Json.dll
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\StackExchange.Redis.dll
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Autofac.xml
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\Newtonsoft.Json.xml
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\bin\Release\StackExchange.Redis.xml
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.csprojResolveAssemblyReference.cache
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.dll
+C:\Users\admin\Documents\GitHub\MagneticNote\Back\MagneticNote-Back\MagneticNote.Common\obj\Release\MagneticNote.Common.pdb

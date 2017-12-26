@@ -40,6 +40,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Add(String User)
         {
             User user = JsonConvert.DeserializeObject<User>(User);
@@ -63,6 +64,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Update(String User)
         {
             User user = JsonConvert.DeserializeObject<User>(User);

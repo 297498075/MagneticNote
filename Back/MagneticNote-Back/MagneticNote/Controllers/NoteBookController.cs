@@ -41,6 +41,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Add(String NoteBook)
         {
             NoteBook noteBook = JsonConvert.DeserializeObject<NoteBook>(NoteBook);
@@ -85,6 +86,7 @@ namespace MagneticNote.Controllers
             return null;
         }
 
+        [ValidateInput(false)]
         public ActionResult Update(String NoteBook)
         {
             NoteBook noteBook = JsonConvert.DeserializeObject<NoteBook>(NoteBook);
