@@ -1,4 +1,4 @@
-﻿var express = require('express');
+var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var axios = require('axios');
@@ -10,15 +10,15 @@ var querystring = require('querystring');
 var app = express();
 
 const options = {
-    pfx: fs.readFileSync(__dirname+'CA文件'),
-    passphrase: 'CA密码'
+    pfx: fs.readFileSync(__dirname+'/ssl/214280259270360.pfx'),
+    passphrase: '214280259270360'
 };
 
 http.createServer(app).listen(80);
 https.createServer(options, app).listen(443);
 
-var requestAddress = "API请求地址";
-var requestKey = "?RequestKey=请求密钥";
+var requestAddress = "https://note.snkdev.top:453";
+var requestKey = "?RequestKey=e07fbbb9fbcdc86589667d8774bf11d5f70d23d1";
 
 app.use(function(req, res, next) {
     if(req.protocol == 'http') {
