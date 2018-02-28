@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MagneticNote</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_selectNote">选择笔记</string>
+    <string name="action_addToHome">添加到手机主屏</string>
+    <string name="action_sortOrder">排序方式</string>
+    <string name="action_selectOption">查看选项</string>
+    <string name="action_synchronization">同步</string>
+    <string name="action_setting">设置</string>
+
+    <string name="serverAddress">note.snkdev.top</string>
+
+    <string name="email"></string>
+    <string name="password"></string>
+</resources>

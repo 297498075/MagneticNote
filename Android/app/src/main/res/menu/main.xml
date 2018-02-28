@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_selectNote"
+        android:orderInCategory="100"
+        android:title="@string/action_selectNote" />
+    <item
+        android:id="@+id/action_addToHome"
+        android:orderInCategory="101"
+        android:title="@string/action_addToHome" />
+    <item
+        android:id="@+id/action_sortOrder"
+        android:orderInCategory="102"
+        android:title="@string/action_sortOrder" />
+    <item
+        android:id="@+id/action_selectOption"
+        android:orderInCategory="103"
+        android:title="@string/action_selectOption" />
+    <item
+        android:id="@+id/action_synchronzation"
+        android:orderInCategory="104"
+        android:title="@string/action_synchronization" />
+    <item
+        android:id="@+id/action_setting"
+        android:orderInCategory="105"
+        android:title="@string/action_setting" />
+
+</menu>
